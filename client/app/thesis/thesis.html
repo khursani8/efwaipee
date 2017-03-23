@@ -1,0 +1,76 @@
+<div class="container text-center">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Thesis:</h1>
+            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thesis in thesisCtrl.awesomeThesis">
+                <li><a href="#" uib-tooltip="{{thesis.status}}">{{thesis.name}}<button type="button" class="close" ng-click="thesisCtrl.deleteThesis(thesis)">&times;</button></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <form class="thing-form" style="margin: 0 auto; width:250px;">
+        <p class="input-group">
+            <div class="input-field">
+                <input type="text" class="form-control" placeholder="Thesis Name" ng-model="thesisCtrl.thesisName">
+            </div>
+            <div class="input-field">
+                <input type="text" id="studentId" class="form-control" placeholder="student id" ng-model="thesisCtrl.studentId">
+            </div>
+            <div class="input-field">
+                <input type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId">
+            </div>
+
+            <div class="input-field col s12">
+                <select ng-model="thesisCtrl.checkpoint">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">CIS</option>
+                    <option value="2">CGS</option>
+                    <option value="3">UAC</option>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <select ng-model="thesisCtrl.status">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Sending</option>
+                    <option value="2">Arrived</option>
+                    <option value="3">Completed</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>
+
+        </p>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    $('#studentId').autocomplete({
+        data: {
+            "19137": null,
+            "17989": null,
+            "19073": null
+        },
+        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        onAutocomplete: function(val) {
+            // Callback function when value is autcompleted.
+        },
+        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    });
+    $('#examinerId').autocomplete({
+        data: {
+            "19137": null,
+            "17989": null,
+            "19073": null
+        },
+        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        onAutocomplete: function(val) {
+            // Callback function when value is autcompleted.
+        },
+        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    });
+</script>
