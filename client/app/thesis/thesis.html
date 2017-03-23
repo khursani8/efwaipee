@@ -1,49 +1,75 @@
-<div class="container text-center">
+<div class="container text-center row">
 
-    <div class="row">
+    <!--<div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Thesis:</h1>
             <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thesis in thesisCtrl.awesomeThesis">
                 <li><a href="#" uib-tooltip="{{thesis.status}}">{{thesis.name}}<button type="button" class="close" ng-click="thesisCtrl.deleteThesis(thesis)">&times;</button></a></li>
             </ul>
         </div>
-    </div>
+    </div>-->
+    <div class="col s4">
+        <form class="thing-form" style="margin: 0 auto; width:250px;">
+            <p class="input-group">
+                <div class="input-field">
+                    <input type="text" class="form-control" placeholder="Thesis Name" ng-model="thesisCtrl.thesisName">
+                </div>
+                <div class="input-field">
+                    <input type="text" id="studentId" class="form-control" placeholder="student id" ng-model="thesisCtrl.studentId">
+                </div>
+                <div class="input-field">
+                    <input type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId">
+                </div>
 
-    <form class="thing-form" style="margin: 0 auto; width:250px;">
-        <p class="input-group">
-            <div class="input-field">
-                <input type="text" class="form-control" placeholder="Thesis Name" ng-model="thesisCtrl.thesisName">
-            </div>
-            <div class="input-field">
-                <input type="text" id="studentId" class="form-control" placeholder="student id" ng-model="thesisCtrl.studentId">
-            </div>
-            <div class="input-field">
-                <input type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId">
-            </div>
-
-            <div class="input-field col s12">
-                <select ng-model="thesisCtrl.checkpoint">
-                    <option value="" disabled selected>Choose your option</option>
+                <div class="input-field col s12">
+                    <select ng-model="thesisCtrl.checkpoint">
+                    <option value="" disabled selected>Choose your checkpoint</option>
                     <option value="1">CIS</option>
                     <option value="2">CGS</option>
                     <option value="3">UAC</option>
                 </select>
-            </div>
+                </div>
 
-            <div class="input-field col s12">
-                <select ng-model="thesisCtrl.status">
-                    <option value="" disabled selected>Choose your option</option>
+                <div class="input-field col s12">
+                    <select ng-model="thesisCtrl.status">
+                    <option value="" disabled selected>Choose your status</option>
                     <option value="1">Sending</option>
                     <option value="2">Arrived</option>
                     <option value="3">Completed</option>
                 </select>
-            </div>
+                </div>
 
-            <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>
+                <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>
 
-        </p>
-    </form>
+            </p>
+        </form>
+    </div>
+
+    <div class="col s8">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Student ID</th>
+                    <th>Examiner ID</th>
+                    <th>Checkpoint</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis">
+                <tr>
+                    <td>{{thesis.name}}</td>
+                    <td>{{thesis.studentId}}</td>
+                    <td>{{thesis.examinerId}}</td>
+                    <td>{{thesis.checkpoint | checkpoint}}</td>
+                    <td>{{thesis.status | status}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
 
 <script>
     $(document).ready(function() {

@@ -39,8 +39,6 @@ export class ThesisComponent {
             this.thesisName = '';
             this.examinerId = '';
             this.studentId = '';
-            this.checkpoint = '';
-            this.status = '';
         }
     }
 

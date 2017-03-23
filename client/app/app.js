@@ -46,6 +46,52 @@ angular.module('efwaipeeApp', [ngCookies, ngResource, ngSanitize, 'btford.socket
                 }
             });
         });
+    })
+    .filter('status', function() {
+
+        // In the return function, we must pass in a single parameter which will be the data we will work on.
+        // We have the ability to support multiple other parameters that can be passed into the filter optionally
+        return function(input) {
+
+            var output;
+            switch (input) {
+                case "1":
+                    output = "Sending"
+                    break;
+                case "2":
+                    output = "Arrived"
+                    break;
+                default:
+                    output = "Completed"
+            }
+
+            return output;
+
+        }
+
+    })
+    .filter('checkpoint', function() {
+
+        // In the return function, we must pass in a single parameter which will be the data we will work on.
+        // We have the ability to support multiple other parameters that can be passed into the filter optionally
+        return function(input) {
+
+            var output;
+            switch (input) {
+                case "1":
+                    output = "CIS"
+                    break;
+                case "2":
+                    output = "CGS"
+                    break;
+                default:
+                    output = "UAC"
+            }
+
+            return output;
+
+        }
+
     });
 
 angular.element(document)

@@ -15,18 +15,18 @@ $fa-font-path: '/assets/fonts/font-awesome/';
     padding: 0.2em 0;
 }
 
+.caret {
+    border-color: transparent !important;
+}
+
 // Component styles are injected through gulp
 
 /* inject:scss */
 
 @import 'admin/admin';
-
 @import 'main/main';
-
 @import 'thesis/thesis';
-
 @import '../components/footer/footer';
-
 @import '../components/modal/modal';
 
 /* endinject */
