@@ -54,6 +54,7 @@
                     <th>Examiner ID</th>
                     <th>Checkpoint</th>
                     <th>Status</th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -64,6 +65,7 @@
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.checkpoint | checkpoint}}</td>
                     <td>{{thesis.status | status}}</td>
+                    <td><button type="button" class="close" ng-click="thesisCtrl.deleteThesis(thesis)">&times;</button></td>
                 </tr>
             </tbody>
         </table>

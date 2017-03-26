@@ -24,9 +24,13 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 /* inject:scss */
 
 @import 'admin/admin';
+
 @import 'main/main';
+
 @import 'thesis/thesis';
+
 @import '../components/footer/footer';
+
 @import '../components/modal/modal';
 
 /* endinject */
