@@ -27,6 +27,10 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 
 @import 'main/main';
 
+@import 'qrcode/qrcode';
+
+@import 'qrrecognizer/qrrecognizer';
+
 @import 'thesis/thesis';
 
 @import '../components/footer/footer';

@@ -11,6 +11,14 @@ export class NavbarComponent {
         {
             title: 'Thesis',
             state: 'thesis'
+        },
+        {
+            title: 'Qrcode',
+            state: 'qrcode'
+        },
+        {
+            title: 'Recognizer',
+            state: 'qrrecognizer'
         }
     ];
 

@@ -78,6 +78,14 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
+// Gets a single Thesis based on student Idfrom the DB
+export function showStudent(req, res) {
+  return Thesis.find({"studentId":req.params.id}).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Creates a new Thesis in the DB
 export function create(req, res) {
   return Thesis.create(req.body)

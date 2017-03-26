@@ -12,6 +12,8 @@ import uiBootstrap from 'angular-ui-bootstrap';
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
 import ThesisComponent from './thesis/thesis.component';
+import QrcodeComponent from './qrcode/qrcode.component';
+import QrrecognizerComponent from './qrrecognizer/qrrecognizer.component';
 
 
 import {
@@ -32,7 +34,7 @@ import './app.scss';
 
 angular.module('efwaipeeApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
         uiBootstrap, _Auth, account, admin, navbar, footer, main, constants, socket, util,
-        ThesisComponent
+        ThesisComponent,QrcodeComponent,QrrecognizerComponent
     ])
     .config(routeConfig)
     .run(function($rootScope, $location, Auth) {
@@ -46,57 +48,11 @@ angular.module('efwaipeeApp', [ngCookies, ngResource, ngSanitize, 'btford.socket
                 }
             });
         });
-    })
-    .filter('status', function() {
-
-        // In the return function, we must pass in a single parameter which will be the data we will work on.
-        // We have the ability to support multiple other parameters that can be passed into the filter optionally
-        return function(input) {
-
-            var output;
-            switch (input) {
-                case "1":
-                    output = "Sending"
-                    break;
-                case "2":
-                    output = "Arrived"
-                    break;
-                default:
-                    output = "Completed"
-            }
-
-            return output;
-
-        }
-
-    })
-    .filter('checkpoint', function() {
-
-        // In the return function, we must pass in a single parameter which will be the data we will work on.
-        // We have the ability to support multiple other parameters that can be passed into the filter optionally
-        return function(input) {
-
-            var output;
-            switch (input) {
-                case "1":
-                    output = "CIS"
-                    break;
-                case "2":
-                    output = "CGS"
-                    break;
-                default:
-                    output = "UAC"
-            }
-
-            return output;
-
-        }
-
     });
 
 angular.element(document)
     .ready(() => {
         angular.bootstrap(document, ['efwaipeeApp'], {
-            strictDi: true
+            strictDi: false
         });
     });

@@ -51,6 +51,38 @@ export class ThesisComponent {
 }
 
 export default angular.module('efwaipeeApp.thesis', [uiRouter])
+.filter('status', function() {
+        return function(input) {
+            var output;
+            switch (input) {
+                case "1":
+                    output = "Sending"
+                    break;
+                case "2":
+                    output = "Arrived"
+                    break;
+                default:
+                    output = "Completed"
+            }
+            return output;
+        }
+    })
+    .filter('checkpoint', function() {
+        return function(input) {
+            var output;
+            switch (input) {
+                case "1":
+                    output = "CIS"
+                    break;
+                case "2":
+                    output = "CGS"
+                    break;
+                default:
+                    output = "UAC"
+            }
+            return output;
+        }
+    })
     .config(routes)
     .component('thesis', {
         template: require('./thesis.html'),
