@@ -14,6 +14,7 @@ import uiBootstrap from 'angular-ui-bootstrap';
 import ThesisComponent from './thesis/thesis.component';
 import QrcodeComponent from './qrcode/qrcode.component';
 import QrrecognizerComponent from './qrrecognizer/qrrecognizer.component';
+import DashboardComponent from './dashboard/dashboard.component';
 
 
 import {
@@ -34,7 +35,7 @@ import './app.scss';
 
 angular.module('efwaipeeApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
         uiBootstrap, _Auth, account, admin, navbar, footer, main, constants, socket, util,
-        ThesisComponent,QrcodeComponent,QrrecognizerComponent
+        ThesisComponent,QrcodeComponent,QrrecognizerComponent,DashboardComponent
     ])
     .config(routeConfig)
     .run(function($rootScope, $location, Auth) {

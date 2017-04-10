@@ -1,0 +1,56 @@
+<div>
+  <canvas id="demoCanvas" width="1024" height="680"></canvas>
+</div>
+
+<script>
+    y = 200;
+    function createCircle(x,y){
+        var circle = new createjs.Shape();
+        circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+        circle.x = x || 100;
+        circle.y = y || 300;
+        return circle
+    }
+    function createLine(x,y,dy){
+        line = new createjs.Shape();
+        line.graphics.setStrokeStyle(1).beginStroke("rgba(0,0,0,1)");
+        line.graphics.moveTo(x, y);
+        line.graphics.lineTo(x+200, dy);
+        line.graphics.endStroke();
+        return line
+    }
+    function createText(x,y,word){
+        text = new createjs.Text(word, "20px Arial", "#ff7700");
+        text.x = x;
+        text.y = y;
+        text.textBaseline = "alphabetic";
+        return text
+    }
+    var stage = new createjs.Stage("demoCanvas");
+    circle1 = createCircle(100,y);
+    circle2 = createCircle(300,y);
+    circle3 = createCircle(500,y-80);
+    circle4 = createCircle(500,y+70);
+    
+    line1 = createLine(100,y,y);
+    line2 = createLine(300,y,y-80);
+    line3 = createLine(300,y,y+80);
+
+    text1 = createText(65,y+70,"Student");
+    text2 = createText(275,y+70,"CGS");
+    text3 = createText(420,y-10,"External Examiner");
+    text4 = createText(420,y+140,"Internal Examiner");    
+    
+    stage.addChild(line1,line2,line3,circle1,circle2,circle3,circle4,text1,text2,text3,text4);
+
+    // createjs.Ticker.setFPS(60);
+    // createjs.Ticker.addEventListener("tick", onTick);
+
+    // function onTick() {
+    //     arc.rotation++;
+    //     stage.update();
+    // }
+    stage.update();
+
+</script>
+

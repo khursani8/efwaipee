@@ -19,6 +19,10 @@ export class NavbarComponent {
         {
             title: 'Recognizer',
             state: 'qrrecognizer'
+        },
+        {
+            title: 'Dashboard',
+            state: 'dashboard'
         }
     ];
 
