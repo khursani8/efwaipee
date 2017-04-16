@@ -7,23 +7,19 @@
 
         <div class="col s8">
             <div class="input-field">
-                <input type="text" id="thesisId" class="form-control" placeholder="thesis id" ng-model="qrcodeCtrl.thesisId ">
+                <input type="text" ng-change="generateQR({'text':thesisId,foreground:'#2196F3'})" id="thesisId" class="form-control" placeholder="thesis id" ng-model="thesisId ">
             </div>
-            <div>{{qrcodeCtrl.thesisId}}</div>
-            <button  onclick="generateQR(thesisId.value)">click</button>
+            <div>{{thesisId}}</div>
+            <!--<button  ng-click="generateQR({'text':thesisId,foreground:'#2196F3'})">click</button>-->
         </div>
     </div>
 
     
 
   <script>
-    generateQR = function (params) {
-        $('#qrcode').empty()
-        console.log('generateQR',params);
-      $('#qrcode').qrcode(params);
-    }
+    
     $(document).ready(function(){
-        generateQR('test');
+        // generateQR({text:'size doest not matter',foreground:"#2196F3"});
     })
 
     $('#thesisId').autocomplete({

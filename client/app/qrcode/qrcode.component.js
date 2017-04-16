@@ -9,7 +9,14 @@ export class QrcodeComponent {
   /*@ngInject*/
   constructor($http, $scope, socket) {
     
-
+    $scope.thesisId = 0;
+    $scope.generateQR = function (params) {
+        $('#qrcode').empty()
+        console.log('generateQR',params);
+      $('#qrcode').qrcode(params);
+    }
+    $scope.generateQR({text:'size doest not matter',foreground:"#2196F3"});
+    
   }
 }
 
