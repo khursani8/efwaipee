@@ -9,7 +9,7 @@ export class QrcodeComponent {
   /*@ngInject*/
   constructor($http, $scope, socket) {
     
-    $scope.thesisId = 0;
+    $scope.thesisId = "any id"
     $scope.generateQR = function (params) {
         $('#qrcode').empty()
         console.log('generateQR',params);
