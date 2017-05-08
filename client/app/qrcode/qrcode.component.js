@@ -12,10 +12,10 @@ export class QrcodeComponent {
     $scope.thesisId = "any id"
     $scope.generateQR = function (params) {
         $('#qrcode').empty()
-        console.log('generateQR',params);
+        // console.log('generateQR',params);
       $('#qrcode').qrcode(params);
     }
-    $scope.generateQR({text:'size doest not matter',foreground:"#2196F3"});
+    $scope.generateQR({text:'tak kesah size data',foreground:"#2196F3",background:"#FCC11B"});
     
   }
 }
