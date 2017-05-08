@@ -9,8 +9,7 @@ var ThesisSchema = new mongoose.Schema({
     name: String,
     studentId: Number,
     examinerId: Number,
-    checkpoint: String,
-    status: String
+    checkpoint: String
 });
 
 registerEvents(ThesisSchema);
