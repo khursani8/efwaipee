@@ -16,26 +16,26 @@ export class MainController {
     });
   }
 
-  $onInit() {
-    this.$http.get('/api/things')
-      .then(response => {
-        this.awesomeThings = response.data;
-        this.socket.syncUpdates('thing', this.awesomeThings);
-      });
-  }
+  // $onInit() {
+  //   this.$http.get('/api/things')
+  //     .then(response => {
+  //       this.awesomeThings = response.data;
+  //       this.socket.syncUpdates('thing', this.awesomeThings);
+  //     });
+  // }
 
-  addThing() {
-    if(this.newThing) {
-      this.$http.post('/api/things', {
-        name: this.newThing
-      });
-      this.newThing = '';
-    }
-  }
+  // addThing() {
+  //   if(this.newThing) {
+  //     this.$http.post('/api/things', {
+  //       name: this.newThing
+  //     });
+  //     this.newThing = '';
+  //   }
+  // }
 
-  deleteThing(thing) {
-    this.$http.delete(`/api/things/${thing._id}`);
-  }
+  // deleteThing(thing) {
+  //   this.$http.delete(`/api/things/${thing._id}`);
+  // }
 }
 
 export default angular.module('efwaipeeApp.main', [uiRouter])

@@ -45,7 +45,7 @@
 
             <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis">
                 <tr>
-                    <td>{{thesis.name}}</td>
+                    <td ui-sref=".details({id:thesis._id})">{{thesis.name}}</td>
                     <td>{{thesis.studentId}}</td>
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.checkpoint | checkpoint}}</td>
@@ -54,7 +54,10 @@
             </tbody>
         </table>
     </div>
+<!--<a ui-sref=".details({id:1})" class="btn btn-primary">Details</a>-->
 </div>
+
+<div ui-view></div>
 
 
 <script>

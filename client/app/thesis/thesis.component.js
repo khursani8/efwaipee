@@ -50,6 +50,27 @@ export class ThesisComponent {
 
 }
 
+export class ThesisDetailsComponent{
+    constructor($http, $scope, socket,$stateParams) {
+        this.$http = $http;
+        this.socket = socket;
+        
+        $scope.id = $stateParams.id;
+        console.log('testscope',$scope.id);
+
+        $scope.generateQR = function (params) {
+        $('#qrcode').empty()
+            // console.log('generateQR',params);
+        $('#qrcode').qrcode(params);
+    }
+    
+        $scope.generateQR({text:$scope.id
+        ,foreground:"#2196F3",background:"#FCC11B"
+        });
+
+    }
+}
+
 export default angular.module('efwaipeeApp.thesis', [uiRouter])
 .filter('status', function() {
         return function(input) {
@@ -88,5 +109,10 @@ export default angular.module('efwaipeeApp.thesis', [uiRouter])
         template: require('./thesis.html'),
         controller: ThesisComponent,
         controllerAs: 'thesisCtrl'
+    })
+    .component('details',{
+        template: require('./thesis.details.html'),
+        controller: ThesisDetailsComponent,
+        controllerAs: 'thesisDetailsCtrl'
     })
     .name;

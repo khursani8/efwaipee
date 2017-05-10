@@ -6,5 +6,10 @@ export default function($stateProvider) {
     .state('thesis', {
       url: '/thesis',
       template: '<thesis></thesis>'
-    });
+    })
+    .state('thesis.details',{
+      url:'/:id',
+      template: '<details open></details>'
+    })
+    ;
 }
