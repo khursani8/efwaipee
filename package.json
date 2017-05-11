@@ -139,7 +139,7 @@
     "test": "gulp test",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "start": "node server",
-    "siap": "gulp build&&gulp buildcontrol:heroku"
+    "siap": "gulp build&&cd dist&&gulp buildcontrol:heroku&&cd .."
   },
   "private": true
 }
