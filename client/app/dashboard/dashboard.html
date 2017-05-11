@@ -1,54 +1,49 @@
-<div>
+<div class="container">
+
+    <input type="text" id="input"><button class="btn btn-primary" onclick="check()">Check</button>
   <div class="round">
-    <round-progress
-    max="2"
-    current="2"
-    color="#45ccce"
-    bgcolor="#eaeaea"
-    radius="100"
-    stroke="20"
-    semi="false"
-    rounded="true"
-    clockwise="false"
-    responsive="false"
-    duration="800"
-    animation="easeInOutQuart"
-    animation-delay="0"></round-progress>
+
+    <svg viewBox="0 0 200 200" id="student"
+        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
+        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
+        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">STUDENT</text>
+    </svg>
+
     <svg width=100>
     <line x1="0" y1="100" x2="200" y2="100" style="stroke:rgb(255,0,0);stroke-width:2" />
     </svg>
-    <svg class="round-progress" xmlns="http://www.w3.org/2000/svg" role="progressbar" aria-valuemin="0" viewBox="0 0 200 200"
-    aria-valuemax="2" aria-valuenow="2" style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-    <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-    <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">CGS</text>
-        <path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10"></path>
+
+    <svg viewBox="0 0 200 200" id="cgs"
+        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
+        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
+        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">CGS</text>
     </svg>
+
     <svg width=150>
     <line x1="0" y1="100" x2="200" y2="100" style="stroke:rgb(255,0,0);stroke-width:2" />
-    <line x1="0" y1="100" x2="200" y2="400" style="stroke:rgb(255,0,0);stroke-width:2" />
+    <!--<line x1="0" y1="100" x2="200" y2="400" style="stroke:rgb(255,0,0);stroke-width:2" />-->
     </svg>
-    
+
     <div class="roundcol">
-        
-    <svg class="round-progress" xmlns="http://www.w3.org/2000/svg" role="progressbar" aria-valuemin="0" viewBox="0 0 200 200"
-    aria-valuemax="2" aria-valuenow="2" style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-    <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-    <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">External</text>
-        <path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10"></path>
+
+    <svg viewBox="0 0 200 200" id="internal"
+        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
+        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
+        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">Examiner</text>
     </svg>
-    <svg class="round-progress" xmlns="http://www.w3.org/2000/svg" role="progressbar" aria-valuemin="0" viewBox="0 0 200 200"
-    aria-valuemax="2" aria-valuenow="2" style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-    <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-    <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">Internal</text>
-        <path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10"></path>
-    </svg>
+
+     <!--<svg viewBox="0 0 200 200" id="external"
+        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
+        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
+        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">External</text>
+    </svg>-->
+
+    
+
     </div>
 
-    
 
   </div>
-  
-  
   
 </div>
 
@@ -62,3 +57,98 @@
         flex-direction: column
     }
 </style>
+
+<script>
+
+    var init = function(ele){
+        var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+        path.setAttribute("d","M 100 10 A 90 90 0 0 0 100 10");
+        path.setAttribute("fill","none");
+        path.style.stroke = "rgb(69, 204, 206)"
+        path.style.strokeWidth = "20px"
+        path.style.strokeLinecap = "round"
+        ele.appendChild(path);
+    }
+
+    var half = function(ele){
+        var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+        path.setAttribute("d","M 100.00007853981631 189.99999999996572 A 90 90 0 0 0 100 10");
+        path.setAttribute("fill","none");
+        path.setAttribute("transform","scale(-1, 1) translate(-200 0)");
+        path.style.stroke = "rgb(69, 204, 206)"
+        path.style.strokeWidth = "20px"
+        path.style.strokeLinecap = "round"
+        ele.appendChild(path);
+        
+    }
+
+    var done = function(ele){
+        var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+        path.setAttribute("d","M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10");
+        path.setAttribute("fill","none");
+        path.style.stroke = "rgb(69, 204, 206)"
+        path.style.strokeWidth = "20px"
+        path.style.strokeLinecap = "round"
+        ele.appendChild(path);
+    }
+
+    student = document.getElementById('student')
+    cgs = document.getElementById('cgs')
+    internal = document.getElementById('internal')
+    external = document.getElementById('external')
+
+    var check = function(){
+        id = document.getElementById('input').value
+        
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "/api/thesis/"+id, true);
+            xhttp.send()
+            xhttp.onload = function(data){
+                key = JSON.parse(data.target.response).checkpoint
+                console.log(key);
+                switch (key) {
+        case 1:
+            done(student)
+            half(cgs)
+            init(internal)
+            break;
+        case 2:
+            done(student)
+            done(cgs)
+            init(internal)
+            break;
+        case 3:
+            done(student)
+            done(cgs)
+            half(internal)
+            // key1===3 ? half(external) : init(external)
+            // key1===4 ? done(external) : init(external)
+            break;
+        case 4:
+            done(student)
+            done(cgs)
+            done(internal)
+            // key1===3 ? half(external) : init(external)
+            // key1===4 ? done(external) : init(external)
+            break;
+
+        default:
+            init(student)
+            init(cgs)
+            init(internal)
+            break;
+    }
+            }
+
+    }
+
+
+</script>
+
+<!--
+    <path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 100 10 A 90 90 0 0 0 100 10"></path>
+-->
+
+<!--<path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 100.00007853981631 189.99999999996572 A 90 90 0 0 0 100 10"></path>-->
+
+<!--<path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10"></path>-->

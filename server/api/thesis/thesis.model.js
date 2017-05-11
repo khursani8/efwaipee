@@ -11,7 +11,8 @@ var ThesisSchema = new mongoose.Schema({
     examinerId: String,
     checkpoint: {
         type:Number,
-        default:0
+        default:0,
+        max:4
     }
 });
 
