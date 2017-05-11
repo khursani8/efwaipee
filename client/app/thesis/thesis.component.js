@@ -32,9 +32,7 @@ export class ThesisComponent {
             this.$http.post('/api/thesis', {
                 name: this.thesisName,
                 studentId: this.studentId,
-                examinerId: this.examinerId,
-                checkpoint: this.checkpoint,
-                status: this.status
+                examinerId: this.examinerId
             });
             this.thesisName = '';
             this.examinerId = '';
@@ -56,7 +54,6 @@ export class ThesisDetailsComponent{
         this.socket = socket;
         
         $scope.id = $stateParams.id;
-        console.log('testscope',$scope.id);
 
         $scope.generateQR = function (params) {
         $('#qrcode').empty()
@@ -72,34 +69,24 @@ export class ThesisDetailsComponent{
 }
 
 export default angular.module('efwaipeeApp.thesis', [uiRouter])
-.filter('status', function() {
-        return function(input) {
-            var output;
-            switch (input) {
-                case "1":
-                    output = "Sending"
-                    break;
-                case "2":
-                    output = "Arrived"
-                    break;
-                default:
-                    output = "Completed"
-            }
-            return output;
-        }
-    })
     .filter('checkpoint', function() {
         return function(input) {
             var output;
             switch (input) {
-                case "1":
-                    output = "CIS"
+                case 1:
+                    output = "CGS RECEIVED"
                     break;
-                case "2":
-                    output = "CGS"
+                case 2:
+                    output = "CGS SEND"
+                    break;
+                case 3:
+                    output = "EXAMINER RECEIVED"
+                    break;
+                case 4:
+                    output = "EXAMINER SEND"
                     break;
                 default:
-                    output = "EXAMINER"
+                    output = "STUDENT"
             }
             return output;
         }

@@ -9,7 +9,10 @@ var ThesisSchema = new mongoose.Schema({
     name: String,
     studentId: String,
     examinerId: String,
-    checkpoint: String
+    checkpoint: {
+        type:Number,
+        default:0
+    }
 });
 
 registerEvents(ThesisSchema);

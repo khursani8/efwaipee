@@ -24,13 +24,14 @@ function respondWithResult(res, statusCode) {
 }
 
 function patchUpdates(patches) {
+  
   return function(entity) {
+  patches.value = entity.checkpoint+1
     try {
-      jsonpatch.apply(entity, patches, /*validate*/ true);
+      jsonpatch.apply(entity, [patches], /*validate*/ true);
     } catch(err) {
       return Promise.reject(err);
     }
-
     return entity.save();
   };
 }
@@ -109,6 +110,7 @@ export function patch(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
+  
   return Thesis.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
