@@ -65,7 +65,7 @@ export class ThesisDetailsComponent{
     }
     
         $scope.generateQR({text:$scope.id
-        ,foreground:"#2196F3",background:"#FCC11B"
+        // ,foreground:"#2196F3",background:"#FCC11B"
         });
 
     }
@@ -99,7 +99,7 @@ export default angular.module('efwaipeeApp.thesis', [uiRouter])
                     output = "CGS"
                     break;
                 default:
-                    output = "UAC"
+                    output = "EXAMINER"
             }
             return output;
         }

@@ -19,7 +19,7 @@
                     <option value="" disabled selected>Choose your checkpoint</option>
                     <option value="1">CIS</option>
                     <option value="2">CGS</option>
-                    <option value="3">UAC</option>
+                    <option value="3">EXAMINER</option>
                 </select>
                 </div>
 
@@ -45,7 +45,7 @@
 
             <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis">
                 <tr>
-                    <td ui-sref=".details({id:thesis._id})">{{thesis.name}}</td>
+                    <td ui-sref=".details({id:thesis._id+thesis.examinerId})">{{thesis.name}}</td>
                     <td>{{thesis.studentId}}</td>
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.checkpoint | checkpoint}}</td>
