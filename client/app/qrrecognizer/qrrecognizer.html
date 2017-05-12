@@ -5,7 +5,7 @@
         <video id="preview"></video>
             <script type="text/javascript">
               
-              scanner = new Instascan.Scanner({ video: document.getElementById('preview'),refractoryPeriod: 2000 });
+              scanner = new Instascan.Scanner({ video: document.getElementById('preview'),refractoryPeriod: 5000 });
               scanner.addListener('scan', function (content) {
                 // alert(content);
                 var xhr = new XMLHttpRequest();
@@ -16,14 +16,19 @@
                     path: '/checkpoint'
                 }));
                 // console.log(content);
+                alert('Done!!!')
                 $("#test").append(content+"\n");
               });
               Instascan.Camera.getCameras().then(function (cameras) {
                 if (cameras.length > 0) {
-                  no = prompt('Choose camera\n'+JSON.stringify(cameras))
+                  menu = "Choose camera\n";
+                  let count = 0;
+                  cameras.forEach(function(element) {
+                    menu += count++ + ". " + element.name + "\n"
+                  }, this);
+                  no = prompt(menu)
                   scanner.start(cameras[no])
                     .then(function(){
-                      console.log(cameras)
                       $('#name').append(cameras[no].name)
                     })
                   

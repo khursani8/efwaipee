@@ -8,10 +8,10 @@ export class NavbarComponent {
             title: 'Home',
             state: 'main'
         },
-        {
-            title: 'Thesis',
-            state: 'thesis'
-        },
+        // { admin only
+        //     title: 'Thesis',
+        //     state: 'thesis'
+        // },
         // {
         //     title: 'Qrcode',
         //     state: 'qrcode'
