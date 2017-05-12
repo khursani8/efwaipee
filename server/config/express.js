@@ -20,6 +20,7 @@ import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import mongoose from 'mongoose';
 var MongoStore = connectMongo(session);
+var compression = require('compression')
 
 export default function(app) {
   var env = app.get('env');
@@ -31,6 +32,8 @@ export default function(app) {
   if(env === 'production') {
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
   }
+  app.use(compression())
+
 
   app.set('appPath', path.join(config.root, 'client'));
   app.use(express.static(app.get('appPath')));
