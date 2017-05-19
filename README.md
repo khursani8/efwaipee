@@ -1,7 +1,5 @@
 # efwaipee
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.1.4.
-
 ## Getting Started
 
 ### Prerequisites
@@ -27,3 +25,6 @@ Run `gulp build` for building and `gulp serve` for preview.
 
 Running `npm test` will run the unit tests with karma.
 "# efwaipee" 
+
+Performance result:
+https://drive.google.com/file/d/0B92TplCzcHLQTmtycUNHWmp0T0k/view?usp=sharing
