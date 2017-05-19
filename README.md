@@ -28,5 +28,5 @@ Running `npm test` will run the unit tests with karma.
 
 Performance result:
 
-1. https://drive.google.com/file/d/0B92TplCzcHLQaE1OZmhCbHozdFk/view?usp=sharing
-2. https://drive.google.com/file/d/0B92TplCzcHLQTmtycUNHWmp0T0k/view?usp=sharing
+1. https://drive.google.com/file/d/0B92TplCzcHLQaE1OZmhCbHozdFk/view?usp=sharing (before)
+2. https://drive.google.com/file/d/0B92TplCzcHLQTmtycUNHWmp0T0k/view?usp=sharing (after)
