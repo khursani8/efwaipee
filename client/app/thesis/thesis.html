@@ -14,17 +14,6 @@
                     <input autocomplete="off" type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId">
                 </div>
 
-                <!--<div class="input-field col s12">
-                    <select ng-model="thesisCtrl.checkpoint">
-                    <option value="" disabled selected>Choose your checkpoint</option>
-                    <option value="1">CIS</option>
-                    <option value="2">CGS</option>
-                    <option value="3">EXAMINER</option>
-                </select>
-                </div>-->
-
-                
-
                 <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>
 
             </p>
@@ -58,34 +47,3 @@
 </div>
 
 <div ui-view></div>
-
-
-<script>
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-    $('#studentId').autocomplete({
-        data: {
-            "19137": null,
-            "17989": null,
-            "19073": null
-        },
-        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-        onAutocomplete: function(val) {
-            // Callback function when value is autcompleted.
-        },
-        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-    });
-    $('#examinerId').autocomplete({
-        data: {
-            "19137": null,
-            "17989": null,
-            "19073": null
-        },
-        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-        onAutocomplete: function(val) {
-            // Callback function when value is autcompleted.
-        },
-        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-    });
-</script>
