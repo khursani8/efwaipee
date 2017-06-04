@@ -1,6 +1,6 @@
 # efwaipee
 [![Stories in Ready](https://badge.waffle.io/khursani8/efwaipee.svg?label=ready&title=Ready)](http://waffle.io/khursani8/efwaipee)
-[![Stories in Ready](https://badge.waffle.io/khursani8/efwaipee.svg?label=ready&title=In%20Progress)](http://waffle.io/khursani8/efwaipee)
+[![Stories in Ready](https://badge.waffle.io/khursani8/efwaipee.svg?label=backlog&title=Backlog)](http://waffle.io/khursani8/efwaipee)
 ## Getting Started
 
 ### Prerequisites
