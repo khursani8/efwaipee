@@ -7,7 +7,7 @@ import routes from './thesis.routes';
 
 export class ThesisComponent {
 
-    awesomeThesis = [];
+    
     /*@ngInject*/
     constructor($http, $scope, socket) {
         this.$http = $http;
@@ -21,6 +21,7 @@ export class ThesisComponent {
         this.$http.get('/api/thesis')
             .then(response => {
                 this.awesomeThesis = response.data;
+                this.backup = response.data;
                 console.log(response.data)
                 this.socket.syncUpdates('thesis', this.awesomeThesis);
             });
@@ -32,6 +33,9 @@ export class ThesisComponent {
         this.$http.get('/api/thesis/name/'+this.keyword)
             .then(response=>{
                 this.awesomeThesis = response.data;                
+            })
+            .catch(()=>{
+                this.awesomeThesis = this.backup;
             })
     }
 
