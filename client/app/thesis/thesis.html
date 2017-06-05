@@ -5,13 +5,19 @@
         <form class="thing-form" style="margin: 0 auto; width:250px;">
             <p class="input-group">
                 <div class="input-field">
-                    <input type="text" class="form-control" placeholder="Thesis Name" ng-model="thesisCtrl.thesisName">
+                    <input type="text" class="form-control" placeholder="Thesis Title" ng-model="thesisCtrl.thesisName">
                 </div>
                 <div class="input-field">
                     <input autocomplete="off" type="text" id="studentId" class="form-control" placeholder="student id" ng-model="thesisCtrl.studentId">
                 </div>
                 <div class="input-field">
+                    <input autocomplete="off" type="text" id="studentName" class="form-control" placeholder="student name" ng-model="thesisCtrl.studentName">
+                </div>
+                <div class="input-field">
                     <input autocomplete="off" type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId">
+                </div>
+                <div class="input-field">
+                    <input autocomplete="off" type="text" id="examinerName" class="form-control" placeholder="examiner name" ng-model="thesisCtrl.examinerName">
                 </div>
 
                 <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>
@@ -21,12 +27,15 @@
     </div>
 
     <div class="col s8">
+        <input type="text" ng-change="thesisCtrl.search(thesisCtrl.keyword)" ng-model="thesisCtrl.keyword">
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Title</th>
                     <th>Student ID</th>
+                    <th>Student Name</th>
                     <th>Examiner ID</th>
+                    <th>Examiner Name</th>
                     <th>Checkpoint</th>
                     <th></th>
                 </tr>
@@ -36,7 +45,9 @@
                 <tr>
                     <td ui-sref=".details({id:thesis._id})">{{thesis.name}}</td>
                     <td>{{thesis.studentId}}</td>
+                    <td>{{thesis.studentName}}</td>
                     <td>{{thesis.examinerId}}</td>
+                    <td>{{thesis.examinerName}}</td>
                     <td>{{thesis.checkpoint | checkpoint}}</td>
                     <td><button type="button" class="close btn waves-effect waves-light" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
                 </tr>

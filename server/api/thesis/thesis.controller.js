@@ -87,6 +87,14 @@ export function showStudent(req, res) {
     .catch(handleError(res));
 }
 
+export function showThesis(req, res) {
+  // console.log("show Thesis",req.params.name);
+  return Thesis.find({"name":{'$regex':req.params.name,'$options':'i'}}).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Creates a new Thesis in the DB
 export function create(req, res) {
   return Thesis.create(req.body)

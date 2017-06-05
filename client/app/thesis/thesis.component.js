@@ -27,16 +27,28 @@ export class ThesisComponent {
 
     }
 
+    search(){
+        console.log(this.keyword);
+        this.$http.get('/api/thesis/name/'+this.keyword)
+            .then(response=>{
+                this.awesomeThesis = response.data;                
+            })
+    }
+
     addThesis() {
         if (this.thesisName) {
             this.$http.post('/api/thesis', {
                 name: this.thesisName,
                 studentId: this.studentId,
-                examinerId: this.examinerId
+                studentName: this.studentName,
+                examinerId: this.examinerId,
+                examinerName: this.examinerName
             });
-            this.thesisName = '';
-            this.examinerId = '';
-            this.studentId = '';
+            // this.thesisName = '';
+            // this.examinerId = '';
+            // this.examinerName = '';
+            // this.studentId = '';
+            // this.studentName = '';
         }
     }
 

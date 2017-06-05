@@ -8,6 +8,8 @@ import {
 var ThesisSchema = new mongoose.Schema({
     name: String,
     studentId: String,
+    studentName: String,
+    examinerName: String,
     examinerId: String,
     checkpoint: {
         type:Number,

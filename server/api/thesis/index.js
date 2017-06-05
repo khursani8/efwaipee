@@ -6,6 +6,7 @@ var controller = require('./thesis.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/name/:name', controller.showThesis);
 router.get('/:id', controller.show);
 router.get('/studentId/:id', controller.showStudent);
 router.post('/', controller.create);
