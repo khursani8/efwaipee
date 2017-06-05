@@ -39,6 +39,14 @@ export class ThesisComponent {
             })
     }
 
+    fillForm(thesis){
+        this.thesisName = thesis.name
+        this.studentId = thesis.studentId
+        this.studentName = thesis.studentName
+        this.examinerId = thesis.examinerId
+        this.examinerName = thesis.examinerName
+    }
+
     addThesis() {
         if (this.thesisName) {
             this.$http.post('/api/thesis', {
