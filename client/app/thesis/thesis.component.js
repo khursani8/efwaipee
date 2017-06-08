@@ -29,14 +29,16 @@ export class ThesisComponent {
     }
 
     search(){
-        console.log(this.keyword);
-        this.$http.get('/api/thesis/name/'+this.keyword)
+        // console.log(this.keyword);
+        if(this.keyword){
+            this.$http.get('/api/thesis/name/'+this.keyword)
             .then(response=>{
-                this.awesomeThesis = response.data;                
+                this.awesomeThesis = response.data;
             })
             .catch(()=>{
                 this.awesomeThesis = this.backup;
             })
+        }
     }
 
     fillForm(thesis){
@@ -57,8 +59,8 @@ export class ThesisComponent {
                 examinerName: this.examinerName
             });
             // this.thesisName = '';
-            // this.examinerId = '';
-            // this.examinerName = '';
+            this.examinerId = '';
+            this.examinerName = '';
             // this.studentId = '';
             // this.studentName = '';
         }
