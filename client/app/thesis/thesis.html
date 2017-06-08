@@ -1,5 +1,26 @@
 <div class="container text-center row">
 
+#TODO <br>
+* Get feedback on user experience <br>
+* Develop test cases for this features <br>
+
+    <div class="container">
+        <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>Fill all the required field such as Thesis Title,Student Id,Student Name,Examiner Id and Examiner Name and submit it.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>To generate QRcode click at the Thesis Title(red color) from the table.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Go to <a href="/dashboard">dashboard</a> and scan the generated QRcode.</span></div>
+    </li>
+  </ul>
+    </div>
+
     
     <div class="col s4">
         <form class="thing-form" style="margin: 0 auto; width:250px;">
@@ -58,9 +79,15 @@
 </div>
 
 <div ui-view></div>
-<!--
+
 <style>
-    [ng-click]{
-        
+    [ui-sref]{
+        color:red
     }
-</style>-->
+</style>
+
+<script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>

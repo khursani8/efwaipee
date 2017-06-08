@@ -1,51 +1,54 @@
-<div class="container">
+<div class="container row">
+#TODO <br>
+* Add table similar to mypassport <br>
+* Using timeline style <br>
 
-    <input type="text" id="input"><button class="btn btn-primary" onclick="check()">Check</button>
-  <div class="round">
+    <div class="container">
+        <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>Input thesis id or user id? into the input field.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>Click on check button.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Track your Thesis....</span></div>
+    </li>
+  </ul>
 
-    <svg viewBox="0 0 200 200" id="student"
-        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">STUDENT</text>
-    </svg>
+  <div class="col s8">
+      <input type="text" id="input"><button class="btn btn-primary" onclick="check()">Check</button>
+    <div class="hor">
+        <div class="me circle">
+            <strong></strong>
+        </div>
+        <hr>
+        <div class="cgs circle">
+            <strong></strong>
+        </div>
+        <hr>
+        <div class="Examiner">
+            
+        </div>
+        
+    </div>
+  </div>
 
-    <svg width=100>
-    <line x1="0" y1="100" x2="200" y2="100" style="stroke:rgb(255,0,0);stroke-width:2" />
-    </svg>
-
-    <svg viewBox="0 0 200 200" id="cgs"
-        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">CGS</text>
-    </svg>
-
-    <svg width=150>
-    <line x1="0" y1="100" x2="200" y2="100" style="stroke:rgb(255,0,0);stroke-width:2" />
-    <!--<line x1="0" y1="100" x2="200" y2="400" style="stroke:rgb(255,0,0);stroke-width:2" />-->
-    </svg>
-
-    <div class="roundcol">
-
-    <svg viewBox="0 0 200 200" id="internal"
-        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">Examiner</text>
-    </svg>
-
-     <!--<svg viewBox="0 0 200 200" id="external"
-        style="top: 0px; left: 0px; position: static; width: 200px; height: 200px; overflow: hidden;">
-        <circle fill="none" cx="100" cy="100" r="90" style="stroke: rgb(234, 234, 234); stroke-width: 20px;"></circle>
-        <text x="100" y="100" fill="red" text-anchor="middle" alignment-baseline="middle">External</text>
-    </svg>-->
-
-    
-
+  <div class="col s4">
+      <tr>
+          <td>gggyg</td>
+      </tr>
+  </div>
     </div>
 
-
-  </div>
+    
+  
   
 </div>
+
 
 
 <style>
@@ -56,75 +59,171 @@
         display: flex;
         flex-direction: column
     }
+    .hor{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center
+    }
+    .Examiner{
+        display: flex;
+        justify-content: space-around;
+        width: 100%
+    }
+    .circle {
+        width: 100px;
+        margin: 6px 6px 20px;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        line-height: 1.2;
+    }
+    .circle canvas {
+        vertical-align: top;
+    }
+    .circle strong {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 40px;
+        font-size: 30px;
+        }
+    hr {
+        border: 0;
+        clear:both;
+        display:block;
+        width: 96%;
+        background-color:#000000;
+        height: 1px;
+    }
 </style>
 
 <script>
+  $('.me.circle').circleProgress({
+    value: 0,
+    fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+  }).on('circle-animation-progress', function(event, progress, stepValue) {
+    $(this).find('strong').text("Me");
+  });
+  $('.cgs.circle').circleProgress({
+    value: 0,
+    fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+  }).on('circle-animation-progress', function(event, progress, stepValue) {
+    $(this).find('strong').text("CGS");
+  });
+  $('.third.circle').circleProgress({
+    value: 0,
+    fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+  }).on('circle-animation-progress', function(event, progress, stepValue) {
+    $(this).find('strong').text("IE");
+  });
+  $('.fourth.circle').circleProgress({
+    value: 0,
+    fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+  }).on('circle-animation-progress', function(event, progress, stepValue) {
+    $(this).find('strong').text("EE");
+  });
+</script>
 
-    var init = function(ele){
-        var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-        path.setAttribute("d","M 100 10 A 90 90 0 0 0 100 10");
-        path.setAttribute("fill","none");
-        path.style.stroke = "rgb(69, 204, 206)"
-        path.style.strokeWidth = "20px"
-        path.style.strokeLinecap = "round"
-        ele.appendChild(path);
-    }
+<script>
 
-    var half = function(ele){
-        var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-        path.setAttribute("d","M 100.00007853981631 189.99999999996572 A 90 90 0 0 0 100 10");
-        path.setAttribute("fill","none");
-        path.setAttribute("transform","scale(-1, 1) translate(-200 0)");
-        path.style.stroke = "rgb(69, 204, 206)"
-        path.style.strokeWidth = "20px"
-        path.style.strokeLinecap = "round"
-        ele.appendChild(path);
-        
-    }
 
-    var done = function(ele){
-        var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-        path.setAttribute("d","M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10");
-        path.setAttribute("fill","none");
-        path.style.stroke = "rgb(69, 204, 206)"
-        path.style.strokeWidth = "20px"
-        path.style.strokeLinecap = "round"
-        ele.appendChild(path);
-    }
-
-    student = document.getElementById('student')
-    cgs = document.getElementById('cgs')
-    internal = document.getElementById('internal')
-    external = document.getElementById('external')
 
     var check = function(){
         id = document.getElementById('input').value
         
             var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "/api/thesis/"+id, true);
+            xhttp.open("GET", "/api/thesis/studentId/"+id, true);
             xhttp.send()
             xhttp.onload = function(data){
-                key = JSON.parse(data.target.response).checkpoint
+                response = JSON.parse(data.target.response);
+                console.log(response);
+                console.log(response.length);
+                
+                key = response[0].checkpoint
                 console.log(key);
+                if(key){
+                        if(key===1){
+                            console.log('checkpont 1');
+                            $('.me.circle').circleProgress({
+                                value: 1,
+                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                                $(this).find('strong').text("Me");
+                            });
+
+                            $('.cgs.circle').circleProgress({
+                                value: 0.5,
+                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                                $(this).find('strong').text("CGS");
+                            });
+                        }
+                        else if(key===2){
+                            $('.me.circle').circleProgress({
+                                value: 1,
+                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                                $(this).find('strong').text("Me");
+                            });
+
+                            $('.cgs.circle').circleProgress({
+                                value: 1,
+                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                                $(this).find('strong').text("CGS");
+                            });
+                        }
+                    }
+                
+                for (var index = 0; index < response.length; index++) {
+                    $('.Examiner').append('<div class="'+index+' circle"><strong></strong></div>')
+                    if(response[index].checkpoint===3){
+                        value1 = 0.5
+                    }
+                    else if(response[index].checkpoint===4){
+                        value1 = 1
+                    }
+                    $('.'+index+'.circle').circleProgress({
+                        value: 1,
+                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                    }).on('circle-animation-progress', function(event, progress, stepValue) {
+                        $(this).find('strong').text("Me");
+                    });
+                }
+
+
                 switch (key) {
-        case 1:
-            done(student)
-            half(cgs)
-            init(internal)
+        case 1://cgs received
+            $('.first.circle').circleProgress({
+                value: 1,
+                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                $(this).find('strong').text("Me");
+            });
+            $('.second.circle').circleProgress({
+                value: 0.5,
+                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                $(this).find('strong').text("CGS");
+            });
+            
             break;
-        case 2:
+        case 2://cgs sent
             done(student)
             done(cgs)
             init(internal)
             break;
-        case 3:
+        case 3://examiner received
             done(student)
             done(cgs)
             half(internal)
             // key1===3 ? half(external) : init(external)
             // key1===4 ? done(external) : init(external)
             break;
-        case 4:
+        case 4://examiner sent
             done(student)
             done(cgs)
             done(internal)
@@ -133,9 +232,6 @@
             break;
 
         default:
-            init(student)
-            init(cgs)
-            init(internal)
             break;
     }
             }
@@ -145,10 +241,8 @@
 
 </script>
 
-<!--
-    <path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 100 10 A 90 90 0 0 0 100 10"></path>
--->
-
-<!--<path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 100.00007853981631 189.99999999996572 A 90 90 0 0 0 100 10"></path>-->
-
-<!--<path fill="none" transform="scale(-1, 1) translate(-200 0)" style="stroke: rgb(69, 204, 206); stroke-width: 20px; stroke-linecap: round;" d="M 99.99984292036733 10.000000000137078 A 90 90 0 1 0 100 10"></path>-->
+<script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>
