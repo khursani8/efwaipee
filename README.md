@@ -2,6 +2,8 @@
 [![Stories in Ready](https://badge.waffle.io/khursani8/efwaipee.svg?label=ready&title=Ready)](http://waffle.io/khursani8/efwaipee)
 ## Getting Started
 
+All code in develop branch
+
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
