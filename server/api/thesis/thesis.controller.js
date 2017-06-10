@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Thesis from './thesis.model';
+import Log from '../log/log.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -26,23 +27,29 @@ function respondWithResult(res, statusCode) {
 function patchUpdates(patches) {
   
   return function(entity) {
+
   patches.value = entity.checkpoint+1
-  if(patches.value==2){
+
+  if(patches.value==2){  //update all document to CGS SEND
     Thesis.find({'studentId':entity.studentId}).exec()
       .then((res1)=>{
-        console.log('dlm find',res1)
         res1.forEach(function(el) {
+          if(el.checkpoint<3){
             try {
             jsonpatch.apply(el, [patches], /*validate*/ true);
+            Log.create({'thesisId':el._id,'checkpoint':el.checkpoint,time:new Date(),'studentId':el.studentId})
           } catch(err) {
             return Promise.reject(err);
           }
           el.save();
+          }
         }, this);
       })
   }
+
     try {
       jsonpatch.apply(entity, [patches], /*validate*/ true);
+      Log.create({'thesisId':entity._id,'checkpoint':entity.checkpoint,time:new Date(),'studentId':entity.studentId})
     } catch(err) {
       return Promise.reject(err);
     }
@@ -112,6 +119,9 @@ export function showThesis(req, res) {
 // Creates a new Thesis in the DB
 export function create(req, res) {
   return Thesis.create(req.body)
+    .then((el)=>{
+      Log.create({'thesisId':el._id,'checkpoint':el.checkpoint,time:new Date(),'studentId':el.studentId})
+    })
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
