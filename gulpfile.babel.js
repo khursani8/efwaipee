@@ -553,7 +553,7 @@ gulp.task('copy:assets', () => {
 gulp.task('copy:server', () => {
     return gulp.src([
         'package.json',
-        'DOCKERFILE'
+        'Dockerfile'
     ], {cwdbase: true})
         .pipe(gulp.dest(paths.dist));
 });
