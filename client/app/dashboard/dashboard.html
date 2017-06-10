@@ -30,7 +30,7 @@
             <strong></strong>
         </div>
         <hr>
-        <div class="Examiner">
+        <div class="Examiner" id="Examiner">
             
         </div>
         
@@ -113,18 +113,6 @@
   }).on('circle-animation-progress', function(event, progress, stepValue) {
     $(this).find('strong').text("CGS");
   });
-  $('.third.circle').circleProgress({
-    value: 0,
-    fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-  }).on('circle-animation-progress', function(event, progress, stepValue) {
-    $(this).find('strong').text("IE");
-  });
-  $('.fourth.circle').circleProgress({
-    value: 0,
-    fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-  }).on('circle-animation-progress', function(event, progress, stepValue) {
-    $(this).find('strong').text("EE");
-  });
 </script>
 
 <script>
@@ -137,14 +125,19 @@
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", "/api/thesis/studentId/"+id, true);
             xhttp.send()
+            
             xhttp.onload = function(data){
+                var myNode = document.getElementById("Examiner");
+                while (myNode.firstChild) {
+                    myNode.removeChild(myNode.firstChild);
+                }
                 response = JSON.parse(data.target.response);
                 console.log(response);
-                console.log(response.length);
+                console.log('length',response.length);
                 
                 key = response[0].checkpoint
                 console.log(key);
-                if(key){
+
                         if(key===1){
                             console.log('checkpont 1');
                             $('.me.circle').circleProgress({
@@ -161,7 +154,7 @@
                                 $(this).find('strong').text("CGS");
                             });
                         }
-                        else if(key===2){
+                        else if(key>2){
                             $('.me.circle').circleProgress({
                                 value: 1,
                                 fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
@@ -175,65 +168,26 @@
                             }).on('circle-animation-progress', function(event, progress, stepValue) {
                                 $(this).find('strong').text("CGS");
                             });
+                            
+                            for (var index = 0; index < response.length; index++) {
+                            $('.Examiner').append('<div class="'+index+' circle"><strong></strong></div>')
+                            if(response[index].checkpoint===3){
+                                value1 = 0.5
+                            }
+                            else if(response[index].checkpoint===4){
+                                value1 = 1
+                            }
+                            else{
+                                value1 = 0
+                            }
+                            $('.'+index+'.circle').circleProgress({
+                                value: value1,
+                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                            }).on('circle-animation-progress', function(event, progress, stepValue) {
+                                $(this).find('strong').text("Examiner");
+                            });
                         }
-                    }
-                
-                for (var index = 0; index < response.length; index++) {
-                    $('.Examiner').append('<div class="'+index+' circle"><strong></strong></div>')
-                    if(response[index].checkpoint===3){
-                        value1 = 0.5
-                    }
-                    else if(response[index].checkpoint===4){
-                        value1 = 1
-                    }
-                    $('.'+index+'.circle').circleProgress({
-                        value: 1,
-                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-                    }).on('circle-animation-progress', function(event, progress, stepValue) {
-                        $(this).find('strong').text("Me");
-                    });
-                }
-
-
-                switch (key) {
-        case 1://cgs received
-            $('.first.circle').circleProgress({
-                value: 1,
-                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                $(this).find('strong').text("Me");
-            });
-            $('.second.circle').circleProgress({
-                value: 0.5,
-                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                $(this).find('strong').text("CGS");
-            });
-            
-            break;
-        case 2://cgs sent
-            done(student)
-            done(cgs)
-            init(internal)
-            break;
-        case 3://examiner received
-            done(student)
-            done(cgs)
-            half(internal)
-            // key1===3 ? half(external) : init(external)
-            // key1===4 ? done(external) : init(external)
-            break;
-        case 4://examiner sent
-            done(student)
-            done(cgs)
-            done(internal)
-            // key1===3 ? half(external) : init(external)
-            // key1===4 ? done(external) : init(external)
-            break;
-
-        default:
-            break;
-    }
+                        }
             }
 
     }

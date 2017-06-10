@@ -27,6 +27,20 @@ function patchUpdates(patches) {
   
   return function(entity) {
   patches.value = entity.checkpoint+1
+  if(patches.value==2){
+    Thesis.find({'studentId':entity.studentId}).exec()
+      .then((res1)=>{
+        console.log('dlm find',res1)
+        res1.forEach(function(el) {
+            try {
+            jsonpatch.apply(el, [patches], /*validate*/ true);
+          } catch(err) {
+            return Promise.reject(err);
+          }
+          el.save();
+        }, this);
+      })
+  }
     try {
       jsonpatch.apply(entity, [patches], /*validate*/ true);
     } catch(err) {
