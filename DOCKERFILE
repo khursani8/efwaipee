@@ -5,14 +5,9 @@ FROM    ubuntu
 MAINTAINER khursani8
 
 # Update the repository
-RUN apt-get update
-
-# Install Node.js and other dependencies
-
-RUN apt-get -y install curl
+RUN apt-get update &&  apt-get -y install curl
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-# sudo apt-get install -y nodejs
 
 RUN apt-get -y install git python build-essential nodejs
 
@@ -30,6 +25,8 @@ WORKDIR /home/app/
 
 RUN  npm install
 
-CMD ['export','NODE_ENV=production']
+ENV NODE_ENV=production
+
+EXPOSE 8080
 
 CMD ["npm","start"]
