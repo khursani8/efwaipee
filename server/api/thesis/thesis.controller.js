@@ -72,8 +72,12 @@ function patchUpdates(patches) {
 function removeEntity(res) {
   return function(entity) {
     if(entity) {
+
       return entity.remove()
         .then(() => {
+          Log.find({
+            'thesisId':entity._id
+          }).remove().exec();
           res.status(204).end();
         });
     }
