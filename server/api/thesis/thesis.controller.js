@@ -43,7 +43,7 @@ function patchUpdates(patches) {
             jsonpatch.apply(el, [patches], /*validate*/ true);
             Log.create({'thesisId':el._id,'checkpoint':el.checkpoint,time:new Date(),'studentId':el.studentId})
             var params = {
-              Message: 'There is a thesis from Universiti Teknologi Petronas sending to you right now please open this website ( https://efwaipee.herokuapp.com/qrrecognizer ) and scan the QRcode inside the thesis',
+              Message: 'Thesis from Universiti Teknologi Petronas have been sent to you.Please browse https://efwaipee.herokuapp.com/qrrecognizer and scan the QRcode inside the thesis',
               PhoneNumber: el.examinerPhone,
             };
             sns.publish(params, function(err, data) {
