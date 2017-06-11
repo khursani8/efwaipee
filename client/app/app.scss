@@ -18,9 +18,15 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 .collapsible{
         width: 800px
     }
+// .container{
+//     padding-right: 0px;
+// }
 .row{
     margin-left: 5vw;
     margin-right: 5vw;
+}
+input[type=text]{
+    font-size: 2rem;
 }
 .caret {
     border-color: transparent !important;
