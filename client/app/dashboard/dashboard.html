@@ -7,7 +7,7 @@
         <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Input thesis id or user id? into the input field.</span></div>
+      <div class="collapsible-body"><span>Input student id into the input field.</span></div>
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
@@ -19,8 +19,8 @@
     </li>
   </ul>
 
-  <div class="col s8">
-      <input type="text" id="input"><button class="btn btn-primary" onclick="check()">Check</button>
+  <div class="col m6 s12">
+      <input type="text" id="input" ng-model="dashboardCtrl.id" placeholder="STUDENT ID"><button class="btn btn-primary" onclick="check()" ng-click="dashboardCtrl.checkLog()">Check</button>
     <div class="hor">
         <div class="me circle">
             <strong></strong>
@@ -37,16 +37,27 @@
     </div>
   </div>
 
-  <div class="col s4">
-      <tr>
-          <td>gggyg</td>
-      </tr>
+  <div class="col m6 s12">
+      <table class="centered responsive-table dataTable">
+        <thead>
+          <tr>
+              <th>Thesis ID</th>
+              <th>Checkpoint</th>
+              <th>Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="log in dashboardCtrl.logs">
+            <td>{{log.thesisId}}</td>
+            <td>{{log.checkpoint | translate}}</td>
+            <td>{{log.time | date : "medium"}}</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
     </div>
 
-    
-  
-  
 </div>
 
 
@@ -138,56 +149,56 @@
                 key = response[0].checkpoint
                 console.log(key);
 
-                        if(key===1){
-                            console.log('checkpont 1');
-                            $('.me.circle').circleProgress({
-                                value: 1,
-                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-                            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                                $(this).find('strong').text("Me");
-                            });
+                if(key===1){
+                    console.log('checkpont 1');
+                    $('.me.circle').circleProgress({
+                        value: 1,
+                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                    }).on('circle-animation-progress', function(event, progress, stepValue) {
+                        $(this).find('strong').text("Me");
+                    });
 
-                            $('.cgs.circle').circleProgress({
-                                value: 0.5,
-                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-                            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                                $(this).find('strong').text("CGS");
-                            });
-                        }
-                        else if(key>2){
-                            $('.me.circle').circleProgress({
-                                value: 1,
-                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-                            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                                $(this).find('strong').text("Me");
-                            });
+                    $('.cgs.circle').circleProgress({
+                        value: 0.5,
+                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                    }).on('circle-animation-progress', function(event, progress, stepValue) {
+                        $(this).find('strong').text("CGS");
+                    });
+                }
+                else if(key>1){
+                    $('.me.circle').circleProgress({
+                        value: 1,
+                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                    }).on('circle-animation-progress', function(event, progress, stepValue) {
+                        $(this).find('strong').text("Me");
+                    });
 
-                            $('.cgs.circle').circleProgress({
-                                value: 1,
-                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-                            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                                $(this).find('strong').text("CGS");
-                            });
-                            
-                            for (var index = 0; index < response.length; index++) {
-                            $('.Examiner').append('<div class="'+index+' circle"><strong></strong></div>')
-                            if(response[index].checkpoint===3){
-                                value1 = 0.5
-                            }
-                            else if(response[index].checkpoint===4){
-                                value1 = 1
-                            }
-                            else{
-                                value1 = 0
-                            }
-                            $('.'+index+'.circle').circleProgress({
-                                value: value1,
-                                fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
-                            }).on('circle-animation-progress', function(event, progress, stepValue) {
-                                $(this).find('strong').text("Examiner");
-                            });
-                        }
-                        }
+                    $('.cgs.circle').circleProgress({
+                        value: 1,
+                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                    }).on('circle-animation-progress', function(event, progress, stepValue) {
+                        $(this).find('strong').text("CGS");
+                    });
+                    
+                    for (var index = 0; index < response.length; index++) {
+                    $('.Examiner').append('<div class="'+index+' circle"><strong></strong></div>')
+                    if(response[index].checkpoint===3){
+                        value1 = 0.5
+                    }
+                    else if(response[index].checkpoint===4){
+                        value1 = 1
+                    }
+                    else{
+                        value1 = 0
+                    }
+                    $('.'+index+'.circle').circleProgress({
+                        value: value1,
+                        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI}
+                    }).on('circle-animation-progress', function(event, progress, stepValue) {
+                        $(this).find('strong').text("Examiner");
+                    });
+                }
+                }
             }
 
     }
