@@ -47,6 +47,7 @@ export class ThesisComponent {
         this.studentName = thesis.studentName
         this.examinerId = thesis.examinerId
         this.examinerName = thesis.examinerName
+        this.examinerPhone = thesis.examinerPhone
     }
 
     addThesis() {
@@ -56,11 +57,13 @@ export class ThesisComponent {
                 studentId: this.studentId,
                 studentName: this.studentName,
                 examinerId: this.examinerId,
-                examinerName: this.examinerName
+                examinerName: this.examinerName,
+                examinerPhone: this.examinerPhone
             });
             // this.thesisName = '';
             this.examinerId = '';
             this.examinerName = '';
+            this.examinerPhone = '';
             // this.studentId = '';
             // this.studentName = '';
         }

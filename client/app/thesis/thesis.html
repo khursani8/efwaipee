@@ -40,6 +40,9 @@
                 <div class="input-field">
                     <input autocomplete="off" type="text" id="examinerName" class="form-control" placeholder="examiner name" ng-model="thesisCtrl.examinerName">
                 </div>
+                <div class="input-field">
+                    <input autocomplete="off" type="text" id="examinerPhone" class="form-control" placeholder="+60123456789" ng-model="thesisCtrl.examinerPhone">
+                </div>
 
                 <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>
 
@@ -49,7 +52,7 @@
 
     <div class="col s8">
         <input type="text" ng-change="thesisCtrl.search(thesisCtrl.keyword)" ng-model="thesisCtrl.keyword" placeholder="Search Thesis Title">
-        <table>
+        <table class="centered responsive-table">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -57,6 +60,7 @@
                     <th>Student Name</th>
                     <th>Examiner ID</th>
                     <th>Examiner Name</th>
+                    <th>Examiner Phone</th>
                     <th>Checkpoint</th>
                     <th></th>
                 </tr>
@@ -69,6 +73,7 @@
                     <td ng-click="thesisCtrl.fillForm(thesis)" class="flow-text">{{thesis.studentName}}</td>
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.examinerName}}</td>
+                    <td>{{thesis.examinerPhone}}</td>
                     <td>{{thesis.checkpoint | checkpoint}}</td>
                     <td><button type="button" class="close btn waves-effect waves-light" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
                 </tr>

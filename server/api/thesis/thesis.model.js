@@ -11,6 +11,7 @@ var ThesisSchema = new mongoose.Schema({
     studentName: String,
     examinerName: String,
     examinerId: String,
+    examinerPhone:String,
     checkpoint: {
         type:Number,
         default:1,

@@ -14,6 +14,10 @@ import jsonpatch from 'fast-json-patch';
 import Thesis from './thesis.model';
 import Log from '../log/log.model';
 
+var AWS = require('aws-sdk');
+AWS.config.update({region:'us-east-1',accessKeyId:'AKIAJNGLXK4JNO2DQKPA',secretAccessKey:'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'});
+var sns = new AWS.SNS();
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -34,10 +38,18 @@ function patchUpdates(patches) {
     Thesis.find({'studentId':entity.studentId}).exec()
       .then((res1)=>{
         res1.forEach(function(el) {
-          if(el.checkpoint<3){
+          if(el.checkpoint<3){  //kalau ada yg baru tak kan effect yg lama punya document
             try {
             jsonpatch.apply(el, [patches], /*validate*/ true);
             Log.create({'thesisId':el._id,'checkpoint':el.checkpoint,time:new Date(),'studentId':el.studentId})
+            var params = {
+              Message: 'There is a thesis from Universiti Teknologi Petronas sending to you right now please open this website ( https://efwaipee.herokuapp.com/qrrecognizer ) and scan the QRcode inside the thesis',
+              PhoneNumber: el.examinerPhone,
+            };
+            sns.publish(params, function(err, data) {
+              if (err) console.log(err, err.stack); // an error occurred
+              else     console.log(data);           // successful response
+            });
           } catch(err) {
             return Promise.reject(err);
           }
