@@ -37,6 +37,7 @@ function patchUpdates(patches) {
   return function(entity) {
 
   patches.value = entity.checkpoint+1
+  console.log('entity before',entity)
 
   if(patches.value==2){  //update all document to CGS SEND
     Thesis.find({'studentId':entity.studentId}).exec()
@@ -50,10 +51,13 @@ function patchUpdates(patches) {
               Message: smsMessage,
               PhoneNumber: el.examinerPhone,
             };
-            sns.publish(params, function(err, data) {
+            if(secretAccessKey){
+              sns.publish(params, function(err, data) {
               if (err) console.log(err, err.stack); // an error occurred
               else     console.log(data);           // successful response
             });
+            }
+            
           } catch(err) {
             return Promise.reject(err);
           }
@@ -64,8 +68,13 @@ function patchUpdates(patches) {
   }
 
     try {
+      var tarikh = new Date();
+      if(patches.value==3){
+        jsonpatch.apply(entity, [{op: 'replace', path: '/dateReceived', value: tarikh}]);
+      }
+      
       jsonpatch.apply(entity, [patches], /*validate*/ true);
-      Log.create({'thesisId':entity._id,'checkpoint':entity.checkpoint,time:new Date(),'studentId':entity.studentId})
+      Log.create({'thesisId':entity._id,'checkpoint':entity.checkpoint,time:tarikh,'studentId':entity.studentId})
     } catch(err) {
       return Promise.reject(err);
     }

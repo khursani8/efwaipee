@@ -18,6 +18,7 @@ import DashboardComponent from './dashboard/dashboard.component';
 import FlowchartComponent from './flowchart/flowchart.component';
 
 
+
 import {
     routeConfig
 } from './app.config';
@@ -35,7 +36,7 @@ import socket from '../components/socket/socket.service';
 import './app.scss';
 
 angular.module('efwaipeeApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
-        uiBootstrap, _Auth, account, admin, navbar, footer, main, constants, socket, util,
+        uiBootstrap, _Auth, account, admin, navbar, footer, main, constants, socket, util,'angularMoment',
         ThesisComponent,QrcodeComponent,QrrecognizerComponent,DashboardComponent,FlowchartComponent
     ])
     .config(routeConfig)

@@ -9,9 +9,10 @@ export class ThesisComponent {
 
     
     /*@ngInject*/
-    constructor($http, $scope, socket) {
+    constructor($http, $scope, socket,moment) {
         this.$http = $http;
         this.socket = socket;
+        this.moment = moment;
         $scope.$on('$destroy', function() {
             socket.unsyncUpdates('thesis');
         });
@@ -26,6 +27,27 @@ export class ThesisComponent {
                 this.socket.syncUpdates('thesis', this.awesomeThesis);
             });
 
+    }
+
+    time(received){
+        var output;
+        received = Math.floor(this.moment(new Date()).diff(this.moment(received),'months',true))
+        switch (received) {
+            case 1:
+                output = "one"
+                break;
+            case 2:
+                output = "two"
+                break;
+            case 3:
+                output = "three"
+                break;
+            default:
+                output = null;
+                break;
+        }
+        return output;
+        
     }
 
     search(){

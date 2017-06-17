@@ -52,8 +52,8 @@
                 </tr>
             </thead>
 
-            <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis" class="two">
-                <tr>
+            <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis" >
+                <tr ng-class="thesisCtrl.time(thesis.dateReceived)">
                     <td ui-sref=".details({id:thesis._id})" data-step="6" data-intro="You can click at the title to view the QRcode">{{thesis.name}}</td>
                     <td>{{thesis.studentId}}</td>
                     <td ng-click="thesisCtrl.fillForm(thesis)" class="flow-text" data-step="7" data-intro="You can click at the name to auto refill the forms">{{thesis.studentName}}</td>
