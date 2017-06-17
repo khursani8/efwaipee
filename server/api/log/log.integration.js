@@ -35,8 +35,10 @@ describe('Log API:', function() {
       request(app)
         .post('/api/logs')
         .send({
-          name: 'New Log',
-          info: 'This is the brand new log!!!'
+          thesisId: '123456',
+          studentId: '123456',
+          checkpoint:3,
+          time: new Date()
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -50,8 +52,8 @@ describe('Log API:', function() {
     });
 
     it('should respond with the newly created log', function() {
-      expect(newLog.name).to.equal('New Log');
-      expect(newLog.info).to.equal('This is the brand new log!!!');
+      expect(newLog.thesisId).to.equal('123456');
+      expect(newLog.studentId).to.equal('123456');
     });
   });
 
@@ -77,8 +79,8 @@ describe('Log API:', function() {
     });
 
     it('should respond with the requested log', function() {
-      expect(log.name).to.equal('New Log');
-      expect(log.info).to.equal('This is the brand new log!!!');
+      expect(log.thesisId).to.equal('123456');
+      expect(log.studentId).to.equal('123456');
     });
   });
 

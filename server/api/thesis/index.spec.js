@@ -36,13 +36,13 @@ describe('Thesis API Router:', function() {
     expect(thesisIndex).to.equal(routerStub);
   });
 
-  describe('GET /api/thesis', function() {
-    it('should route to thesis.controller.index', function() {
-      expect(routerStub.get
-        .withArgs('/', 'thesisCtrl.index')
-        ).to.have.been.calledOnce;
-    });
-  });
+  // describe('GET /api/thesis', function() {
+  //   it('should route to thesis.controller.index', function() {
+  //     expect(routerStub.get
+  //       .withArgs('/', 'thesisCtrl.index')
+  //       ).to.have.been.calledOnce;
+  //   });
+  // });
 
   describe('GET /api/thesis/:id', function() {
     it('should route to thesis.controller.show', function() {
