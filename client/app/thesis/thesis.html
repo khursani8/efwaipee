@@ -52,11 +52,11 @@
                 </tr>
             </thead>
 
-            <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis">
+            <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis" class="two">
                 <tr>
-                    <td ui-sref=".details({id:thesis._id})">{{thesis.name}}</td>
+                    <td ui-sref=".details({id:thesis._id})" data-step="6" data-intro="You can click at the title to view the QRcode">{{thesis.name}}</td>
                     <td>{{thesis.studentId}}</td>
-                    <td ng-click="thesisCtrl.fillForm(thesis)" class="flow-text">{{thesis.studentName}}</td>
+                    <td ng-click="thesisCtrl.fillForm(thesis)" class="flow-text" data-step="7" data-intro="You can click at the name to auto refill the forms">{{thesis.studentName}}</td>
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.examinerName}}</td>
                     <td>{{thesis.examinerPhone}}</td>
@@ -74,7 +74,13 @@
 <div ui-view></div>
 
 <style>
-    [ui-sref]{
-        color:red
+    .three{
+        background-color: red
+    }
+    .two{
+        background-color: yellow
+    }
+    .one{
+        background-color: green
     }
 </style>
