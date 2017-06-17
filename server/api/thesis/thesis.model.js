@@ -16,6 +16,10 @@ var ThesisSchema = new mongoose.Schema({
         type:Number,
         default:1,
         max:4
+    },
+    dateReceived:{
+        type:Date,
+        default:null
     }
 });
 
