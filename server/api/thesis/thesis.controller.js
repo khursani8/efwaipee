@@ -14,8 +14,12 @@ import jsonpatch from 'fast-json-patch';
 import Thesis from './thesis.model';
 import Log from '../log/log.model';
 
+var accessKeyId = process.env.aKId
+var secretAccessKey = process.env.secret
+var smsMessage = 'Thesis from Universiti Teknologi Petronas have been sent to you.Please browse https://cgs.sani.tech and scan the QRcode inside the thesis'
+
 var AWS = require('aws-sdk');
-AWS.config.update({region:'us-east-1',accessKeyId:'AKIAJNGLXK4JNO2DQKPA',secretAccessKey:'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'});
+AWS.config.update({region:'us-east-1',accessKeyId,secretAccessKey});
 var sns = new AWS.SNS();
 
 function respondWithResult(res, statusCode) {
@@ -43,7 +47,7 @@ function patchUpdates(patches) {
             jsonpatch.apply(el, [patches], /*validate*/ true);
             Log.create({'thesisId':el._id,'checkpoint':el.checkpoint,time:new Date(),'studentId':el.studentId})
             var params = {
-              Message: 'Thesis from Universiti Teknologi Petronas have been sent to you.Please browse https://efwaipee.herokuapp.com/qrrecognizer and scan the QRcode inside the thesis',
+              Message: smsMessage,
               PhoneNumber: el.examinerPhone,
             };
             sns.publish(params, function(err, data) {
