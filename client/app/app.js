@@ -20,7 +20,7 @@ import FlowchartComponent from './flowchart/flowchart.component';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 OfflinePluginRuntime.install({
     onInstalled: function() {
-    openOfflineReady();
+        Materialize.toast('This website can view offline', 4000, 'rounded')
   }
 });
 

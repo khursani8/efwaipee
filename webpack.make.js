@@ -348,6 +348,9 @@ module.exports = function makeWebpackConfig(options) {
     }
 
     config.plugins.push(new OfflinePlugin({
+        ServiceWorker: {
+        events: true
+      },
         externals:[
             'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css',
             'assets/libs/introjs.min.css',
