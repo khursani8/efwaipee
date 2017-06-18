@@ -5,21 +5,23 @@
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",
+  "theme_color": "#0275b8",
   "icons": [
     {
-      "src": "assets/images/uni.png",
+      "src": "assets/ico/uni.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/images/uni196.png",
+      "src": "assets/ico/uni196.png",
       "sizes": "196x196",
       "type": "image/png"
     },
     {
-      "src": "assets/images/uni.ico",
+      "src": "assets/ico/uni.ico",
       "sizes": "192x192",
       "type": "image/ico"
     }
-  ]
+  ],
+  "background_color": "#fff"
 }
