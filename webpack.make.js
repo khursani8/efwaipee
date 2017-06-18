@@ -10,6 +10,8 @@ var fs = require('fs');
 var path = require('path');
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 var CompressionPlugin = require("compression-webpack-plugin");
+var OfflinePlugin = require('offline-plugin');
+
 
 
 module.exports = function makeWebpackConfig(options) {
@@ -55,7 +57,7 @@ module.exports = function makeWebpackConfig(options) {
                 'angular-ui-router',
                 'lodash',
                 'moment',
-                'angular-moment'
+                'angular-moment',
             ]
         };
     }
@@ -208,7 +210,7 @@ module.exports = function makeWebpackConfig(options) {
 
     config.module.postLoaders = [{
         test: /\.js$/,
-        loader: 'ng-annotate?single_quotes'
+        loader: 'ng-annotate?single_quotes',
     }];
 
     // ISPARTA INSTRUMENTER LOADER
@@ -247,13 +249,7 @@ module.exports = function makeWebpackConfig(options) {
      * List: http://webpack.github.io/docs/list-of-plugins.html
      */
     config.plugins = [
-        new CompressionPlugin({
-            asset: "[path].gz[query]",
-            algorithm: "gzip",
-            test: /\.(js|html)$/,
-            threshold: 10240,
-            minRatio: 0.8
-        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         /*
          * Plugin: ForkCheckerPlugin
          * Description: Do type checking in a separate process, so webpack don't need to wait.
@@ -268,7 +264,14 @@ module.exports = function makeWebpackConfig(options) {
         // Disabled when in test mode or not in build mode
         new ExtractTextPlugin('[name].[hash].css', {
             disable: !BUILD || TEST
-        })
+        }),
+        new CompressionPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.(js|html)$/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),
     ];
 
     if(!TEST) {
@@ -343,6 +346,16 @@ module.exports = function makeWebpackConfig(options) {
             })
         );
     }
+
+    config.plugins.push(new OfflinePlugin({
+        externals:[
+            'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css',
+            'assets/libs/introjs.min.css',
+            'assets/libs/scripts.js',
+            'manifest.json',
+            'sw.js'
+            ]
+    }))
 
     config.cache = DEV;
 

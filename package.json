@@ -48,7 +48,8 @@
     "socket.io": "^1.3.5",
     "socket.io-client": "^1.3.5",
     "socketio-jwt": "^4.2.0",
-    "sprint-js": "~0.1.0"
+    "sprint-js": "~0.1.0",
+    "webpack-plugin-critical": "^1.0.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.6.0",
@@ -76,6 +77,7 @@
     "grunt-build-control": "^0.7.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
     "gulp-env": "^0.4.0",
     "gulp-eslint": "^2.0.0",
     "gulp-imagemin": "^3.0.1",
@@ -87,11 +89,13 @@
     "gulp-node-inspector": "^0.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-protractor": "^3.0.0",
+    "gulp-rename": "^1.2.2",
     "gulp-rev": "^7.0.0",
     "gulp-rev-replace": "^0.4.2",
     "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylint": "^3.0.0",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.5",
     "gulp-watch": "^4.3.5",
     "html-webpack-harddisk-plugin": "~0.0.2",
@@ -119,6 +123,7 @@
     "node-sass": "^3.8.0",
     "nodemon": "^1.3.7",
     "null-loader": "^0.1.1",
+    "offline-plugin": "^4.8.1",
     "open": "~0.0.4",
     "phantomjs-prebuilt": "^2.1.4",
     "postcss-loader": "^0.11.1",
@@ -134,6 +139,7 @@
     "through2": "^2.0.1",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
+    "webpack-manifest-plugin": "^1.1.0",
     "webpack-stream": "^3.2.0"
   },
   "engines": {
@@ -144,7 +150,8 @@
     "test": "gulp test",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "start": "node server",
-    "siap": "gulp build&&cd dist&&gulp buildcontrol:heroku&&cd .."
+    "siap": "gulp build&&cd dist&&gulp buildcontrol:heroku&&cd ..",
+    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"publish\" && git push "
   },
   "private": true
 }

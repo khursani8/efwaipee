@@ -17,7 +17,8 @@ import QrrecognizerComponent from './qrrecognizer/qrrecognizer.component';
 import DashboardComponent from './dashboard/dashboard.component';
 import FlowchartComponent from './flowchart/flowchart.component';
 
-
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 
 import {
     routeConfig

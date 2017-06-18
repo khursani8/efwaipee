@@ -19,6 +19,9 @@ import {Instrumenter} from 'isparta';
 import webpack from 'webpack-stream';
 import makeWebpackConfig from './webpack.make';
 
+var concat = require('gulp-concat');  
+var rename = require('gulp-rename');  
+var uglify = require('gulp-uglify');  
 var plugins = gulpLoadPlugins();
 var config;
 
@@ -53,6 +56,22 @@ const paths = {
     karma: 'karma.conf.js',
     dist: 'dist'
 };
+
+var jsFiles = `${clientPath}/assets/**/*.js`,
+    jsDest = `${paths.dist}/${clientPath}/assets/libs`,
+    jsDest1 = `${clientPath}/assets/libs`;
+
+gulp.task('scripts', function() {
+    if(path.resolve(jsDest1+'/scripts.js')){
+        del(jsDest1+'/scripts.js');
+    }
+    return gulp.src(jsFiles)
+        .pipe(concat('scripts.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(jsDest))
+        .pipe(gulp.dest(jsDest1));
+});
+
 
 /********************
  * Helper functions
@@ -468,7 +487,8 @@ gulp.task('build', cb => {
         'inject',
         'transpile:server',
         [
-            'build:images'
+            'build:images',
+            'scripts',
         ],
         [
             'copy:extras',
@@ -511,7 +531,8 @@ gulp.task('copy:extras', () => {
         `${clientPath}/favicon.ico`,
         `${clientPath}/robots.txt`,
         `${clientPath}/.htaccess`,
-        `${clientPath}/sw.js`
+        `${clientPath}/sw.js`,
+        `${clientPath}/manifest.json`,
     ], { dot: true })
         .pipe(gulp.dest(`${paths.dist}/${clientPath}`));
 });
@@ -553,7 +574,7 @@ gulp.task('copy:assets', () => {
 gulp.task('copy:server', () => {
     return gulp.src([
         'package.json',
-        'Dockerfile'
+        'Dockerfile',
     ], {cwdbase: true})
         .pipe(gulp.dest(paths.dist));
 });
