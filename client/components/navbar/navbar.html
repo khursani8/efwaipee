@@ -1,30 +1,29 @@
-<div class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">ThesisGo</a>
-    </div>
-    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
+<ul id="slide-out" class="side-nav">
+  <li><a href="/">ThesisGo<i class="material-icons">account_balance</i></a></li>
+    <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+      <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+      <li ng-show="$ctrl.isLoggedIn()" class="text-center">Hello {{ $ctrl.getCurrentUser().name }}</li>
+      <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings">Setting 	&nbsp;	&nbsp;<span class="glyphicon glyphicon-cog"></span></a></li>
+      <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+
+      <li><div class="divider"></div></li>
+      <li><div class="divider"></div></li>
+
+      <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
-        <!--<li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>-->
-        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="thesis">Thesis</a></li>        
-      </ul>
+        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="thesis">Thesis</a></li>     
+  </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p> </li>
-        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+  <a href="#" data-activates="slide-out" class="button-collapse btn"><i class="material-icons">menu</i></a>
+  
+  
+  <script>
+    $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+  </script>
