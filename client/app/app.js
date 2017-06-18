@@ -18,7 +18,11 @@ import DashboardComponent from './dashboard/dashboard.component';
 import FlowchartComponent from './flowchart/flowchart.component';
 
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-OfflinePluginRuntime.install();
+OfflinePluginRuntime.install({
+    onInstalled: function() {
+    openOfflineReady();
+  }
+});
 
 import {
     routeConfig

@@ -353,7 +353,8 @@ module.exports = function makeWebpackConfig(options) {
             'assets/libs/introjs.min.css',
             'assets/libs/scripts.js',
             'manifest.json',
-            'sw.js'
+            'sw.js',
+            '/'
             ]
     }))
 
