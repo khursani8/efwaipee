@@ -2,20 +2,28 @@
 <html lang="en">
 
 <head>
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="ThesisGo">
+    <meta name="apple-mobile-web-app-title" content="ThesisGo">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/png" sizes="144x144" href="assets/images/uni.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="assets/images/uni.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="assets/images/uni196.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="196x196" href="assets/images/uni196.png">
+    <link rel="icon" type="image/ico" sizes="192x192" href="assets/images/uni.ico">
+    <link rel="apple-touch-icon" type="image/ico" sizes="192x192" href="assets/images/uni.ico">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
     <title>Thesis Tracking System</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="./assets/libs/introjs.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-    
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -40,11 +48,13 @@
         ga('create', 'UA-XXXXX-X');
         ga('send', 'pageview');
     </script>-->
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
-    <script async src="./assets/libs/instascan.min.js"></script>
-    <script async src="./assets/libs/intro.min.js"></script>
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="./assets/libs/introjs.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async src="./assets/libs/scripts.js"></script>
 
     <navbar></navbar>
     <div ui-view="">
