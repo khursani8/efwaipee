@@ -1,6 +1,6 @@
 <div class="container" data-step="1" data-intro="This is a thesis submission creation page">
     <a  class="waves-effect waves-light btn-large" onclick="javascript:introJs().start();">Thesis Page <i class="material-icons left">help</i></a>
-<div class="container text-center row">
+<div class="text-center row">
     
 
 #TODO <br>
@@ -53,14 +53,14 @@
             </thead>
 
             <tbody ng-repeat="thesis in thesisCtrl.awesomeThesis" >
-                <tr ng-class="thesisCtrl.time(thesis.dateReceived)">
+                <tr>
                     <td ui-sref=".details({id:thesis._id})" data-step="6" data-intro="You can click at the title to view the QRcode">{{thesis.name}}</td>
                     <td>{{thesis.studentId}}</td>
                     <td ng-click="thesisCtrl.fillForm(thesis)" class="flow-text" data-step="7" data-intro="You can click at the name to auto refill the forms">{{thesis.studentName}}</td>
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.examinerName}}</td>
                     <td>{{thesis.examinerPhone}}</td>
-                    <td>{{thesis.checkpoint | checkpoint}}</td>
+                    <td ng-class="thesisCtrl.time(thesis.dateReceived)">{{thesis.checkpoint | checkpoint}}</td>
                     <td><button type="button" class="close btn waves-effect waves-light" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
                 </tr>
             </tbody>
