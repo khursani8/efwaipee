@@ -151,7 +151,7 @@
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "start": "node server",
     "siap": "gulp build&&cd dist&&gulp buildcontrol:heroku&&cd ..",
-    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"publish\" && git push "
+    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"$COMMIT\" && git push "
   },
   "private": true
 }

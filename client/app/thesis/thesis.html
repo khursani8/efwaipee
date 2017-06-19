@@ -61,7 +61,7 @@
                     <td>{{thesis.examinerName}}</td>
                     <td>{{thesis.examinerPhone}}</td>
                     <td ng-class="thesisCtrl.time(thesis.dateReceived)">{{thesis.checkpoint | checkpoint}}</td>
-                    <td><button type="button" class="close btn waves-effect waves-light" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
+                    <td><button type="button" class="btn waves-effect waves-light" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
                 </tr>
             </tbody>
         </table>
@@ -81,6 +81,6 @@
         background-color: yellow
     }
     .one{
-        background-color: green
+        background-color: #4caf50
     }
 </style>
