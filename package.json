@@ -41,6 +41,7 @@
     "moment": "^2.18.1",
     "mongoose": "^4.1.2",
     "morgan": "~1.7.0",
+    "nprogress": "^0.2.0",
     "passport": "~0.3.0",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0",
@@ -151,7 +152,9 @@
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "start": "node server",
     "siap": "gulp build&&cd dist&&gulp buildcontrol:heroku&&cd ..",
-    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"$COMMIT\" && git push "
+    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"$COMMIT\" && git push ",
+    "one": "aws ecs update-service --service efwaipee-service --desired-count 1",
+    "zero": "aws ecs update-service --service efwaipee-service --desired-count 0"
   },
   "private": true
 }
