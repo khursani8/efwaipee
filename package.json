@@ -152,7 +152,7 @@
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "start": "node server",
     "siap": "gulp build&&cd dist&&gulp buildcontrol:heroku&&cd ..",
-    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"$COMMIT\" && git push ",
+    "docker": "gulp build&&cd dist&&git add .&&git commit -m \"deploy from docker\" && git push ",
     "one": "aws ecs update-service --service efwaipee-service --desired-count 1",
     "zero": "aws ecs update-service --service efwaipee-service --desired-count 0"
   },
