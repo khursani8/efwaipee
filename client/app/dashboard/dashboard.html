@@ -6,12 +6,61 @@
 #TODO <br>
 * Add table similar to mypassport <br>
 * Using timeline style <br>
+* hor or ver style <br>
+<input data-step="3" data-intro="First need to input student ID eg. g19137" type="text" id="input" ng-model="dashboardCtrl.id" placeholder="STUDENT ID"><button class="btn btn-primary" onclick="check()" ng-click="dashboardCtrl.checkLog()" data-step="4" data-intro="Click on Check">Check</button>
 
-        
+<div style="height:380px">
+    <div class="col m6 s12" data-step="2" data-intro="This section will visualize the location of the thesis">
+        <div class="hor" data-step="5" data-intro="The wheel progressbar will show the progress">
+            <div class="me circle">
+                <strong></strong>
+            </div>
+            <hr>
+            <div class="cgs circle">
+                <strong></strong>
+            </div>
+            <hr>
+            <div class="Examiner" id="Examiner">
+                
+            </div>
+            
+        </div>
 
-  <div class="col m6 s12" data-step="2" data-intro="This section will visualize the location of the thesis">
-      <input data-step="3" data-intro="First need to input student ID eg. g19137" type="text" id="input" ng-model="dashboardCtrl.id" placeholder="STUDENT ID"><button class="btn btn-primary" onclick="check()" ng-click="dashboardCtrl.checkLog()" data-step="4" data-intro="Click on Check">Check</button>
-    <div class="hor" data-step="5" data-intro="The wheel progressbar will show the progress">
+
+    </div>
+
+    <div class="col m6 s12" data-step="6" data-intro="Thesis Log will be displayed here">
+        <table class="centered responsive-table dataTable">
+            <thead>
+            <tr>
+                <th>Thesis ID</th>
+                <th>Checkpoint</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="log in dashboardCtrl.logs">
+                <td>{{log.thesisId}}</td>
+                <td>{{log.checkpoint | translate}}</td>
+                <td>{{log.time | date : "medium"}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+  
+
+
+
+
+
+<div>
+
+<div class="col m12 s12" data-step="2" data-intro="This section will visualize the location of the thesis">
+    <div class="ver" data-step="5" data-intro="The wheel progressbar will show the progress">
         <div class="me circle">
             <strong></strong>
         </div>
@@ -20,14 +69,14 @@
             <strong></strong>
         </div>
         <hr>
-        <div class="Examiner" id="Examiner">
+        <div class="Examiner" id="Examiner" style="flex-direction:column">
             
         </div>
         
     </div>
-  </div>
+</div>
 
-  <div class="col m6 s12" data-step="6" data-intro="Thesis Log will be displayed here">
+  <div class="col m12 s12" data-step="6" data-intro="Thesis Log will be displayed here">
       <table class="centered responsive-table dataTable">
         <thead>
           <tr>
@@ -47,6 +96,7 @@
       </table>
   </div>
 
+</div>
 
 </div>
 
@@ -64,6 +114,12 @@
     .hor{
         display: flex;
         flex-direction:column;
+        justify-content: center;
+        align-items: center
+    }
+    .ver{
+        display: flex;
+        flex-direction:row;
         justify-content: center;
         align-items: center
     }
