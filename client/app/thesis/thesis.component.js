@@ -29,6 +29,12 @@ export class ThesisComponent {
 
     }
 
+    readabletime(received){
+        if(received)
+            return this.moment(received)
+        return "Examiner not received"
+    }
+
     time(received){
         var output;
         received = Math.floor(this.moment(new Date()).diff(this.moment(received),'months',true))

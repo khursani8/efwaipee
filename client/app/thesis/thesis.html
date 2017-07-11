@@ -1,12 +1,12 @@
-    <a  class="waves-effect waves-light btn-large" onclick="javascript:introJs().start();" style="position: fixed;right: 3px;bottom: 3px;">Thesis Page<i class="material-icons left">help</i></a>
+<a  class="waves-effect waves-light btn-large" onclick="introJs().start();" style="position: fixed;right: 3px;bottom: 3px;">Thesis Page<i class="material-icons left">help</i></a>
 
 <div class="container" data-step="1" data-intro="This is a thesis submission creation page" style="margin-left:5vw">
 <div class="text-center row">
-    
 
 #TODO <br>
 * Get feedback on user experience <br>
 * Develop test cases for this features <br>
+* One hardcopy one submission <br>
 
     
     <div class="col m4 s12"  data-step="2" data-intro="This form is to register student thesis with the examiner.">
@@ -61,13 +61,12 @@
                     <td>{{thesis.examinerId}}</td>
                     <td>{{thesis.examinerName}}</td>
                     <td>{{thesis.examinerPhone}}</td>
-                    <td ng-class="thesisCtrl.time(thesis.dateReceived)">{{thesis.checkpoint | checkpoint}}</td>
-                    <td><button type="button" class="btn waves-effect waves-light" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
+                    <td ng-class="thesisCtrl.time(thesis.dateReceived)"><p class="tooltipped" data-position="top" data-delay="50" data-tooltip={{thesisCtrl.readabletime(thesis.dateReceived)}}>{{thesis.checkpoint | checkpoint}}</p></td>
+                    <td><button type="button" class="btn waves-effect waves-light" style="border-radius:50%" ng-click="thesisCtrl.deleteThesis(thesis)">&nbsp;&times;&nbsp;</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-<!--<a ui-sref=".details({id:1})" class="btn btn-primary">Details</a>-->
 </div>
 
 </div>
@@ -85,3 +84,9 @@
         background-color: #4caf50
     }
 </style>
+<script>
+$( window ).on( "load", function() {
+        console.log( "window loaded" );
+        $('.tooltipped').tooltip({delay: 50});
+    });
+</script>

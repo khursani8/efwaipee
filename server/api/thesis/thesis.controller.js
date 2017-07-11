@@ -16,7 +16,7 @@ import Log from '../log/log.model';
 
 var accessKeyId = process.env.aKId
 var secretAccessKey = process.env.secret
-var smsMessage = 'Thesis from Universiti Teknologi Petronas have been sent to you.Please browse https://cgs.sani.tech and scan the QRcode inside the thesis'
+var smsMessage = 'Thesis from Universiti Teknologi Petronas have been sent to you.Please browse https://cgs.sani.tech and scan the QRcode inside the thesis when received'
 
 var AWS = require('aws-sdk');
 AWS.config.update({region:'us-east-1',accessKeyId,secretAccessKey});
