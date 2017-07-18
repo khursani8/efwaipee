@@ -13,22 +13,22 @@
         <form class="thing-form" style="margin: 0 auto; width:250px;">
             <p class="input-group">
                 <div class="input-field">
-                    <input type="text" class="form-control" placeholder="Thesis Title" ng-model="thesisCtrl.thesisName">
+                    <input type="text" class="form-control" placeholder="Thesis Title" ng-model="thesisCtrl.thesisName" required>
                 </div>
                 <div class="input-field">
-                    <input autocomplete="off" type="text" id="studentId" class="form-control" placeholder="student id" ng-model="thesisCtrl.studentId">
+                    <input autocomplete="off" type="text" id="studentId" class="form-control" placeholder="student id" ng-model="thesisCtrl.studentId" required>
                 </div>
                 <div class="input-field">
-                    <input autocomplete="off" type="text" id="studentName" class="form-control" placeholder="student name" ng-model="thesisCtrl.studentName">
+                    <input autocomplete="off" type="text" id="studentName" class="form-control" placeholder="student name" ng-model="thesisCtrl.studentName" required>
                 </div>
                 <div class="input-field">
-                    <input autocomplete="off" type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId">
+                    <input autocomplete="off" type="text" id="examinerId" class="form-control" placeholder="examiner id" ng-model="thesisCtrl.examinerId" required>
                 </div>
                 <div class="input-field">
-                    <input autocomplete="off" type="text" id="examinerName" class="form-control" placeholder="examiner name" ng-model="thesisCtrl.examinerName">
+                    <input autocomplete="off" type="text" id="examinerName" class="form-control" placeholder="examiner name" ng-model="thesisCtrl.examinerName" required>
                 </div>
                 <div class="input-field">
-                    <input autocomplete="off" type="text" id="examinerPhone" class="form-control" placeholder="+60123456789" ng-model="thesisCtrl.examinerPhone">
+                    <input autocomplete="off" type="text" id="examinerPhone" class="form-control" placeholder="+60123456789" ng-model="thesisCtrl.examinerPhone" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary" ng-click="thesisCtrl.addThesis()">Add New</button>

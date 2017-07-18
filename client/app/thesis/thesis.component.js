@@ -79,7 +79,7 @@ export class ThesisComponent {
     }
 
     addThesis() {
-        if (this.thesisName) {
+        if (this.thesisName && this.studentId && this.studentId && this.examinerId && this.examinerName && this.thesisPhone) {
             this.$http.post('/api/thesis', {
                 name: this.thesisName,
                 studentId: this.studentId,
