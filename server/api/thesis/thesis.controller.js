@@ -39,11 +39,14 @@ function patchUpdates(patches) {
   patches.value = entity.checkpoint+1
   console.log('entity before',entity)
 
-  if(patches.value==2){  //update all document to CGS SEND
+  if(patches.value==2){  //easy update for all document to CGS SEND
     Thesis.find({'studentId':entity.studentId}).exec()
       .then((res1)=>{
         res1.forEach(function(el) {
-          if(el.checkpoint<3){  //kalau ada yg baru tak kan effect yg lama punya document
+          var elid = ""+el._id
+          var enid = ""+entity._id
+          console.log('checkid',elid,enid,elid == enid);
+          if(el.checkpoint<3 && elid != enid){  //kalau ada yg baru tak kan effect yg lama punya document
             try {
             jsonpatch.apply(el, [patches], /*validate*/ true);
             Log.create({'thesisId':el._id,'checkpoint':el.checkpoint,time:new Date(),'studentId':el.studentId})
@@ -69,12 +72,14 @@ function patchUpdates(patches) {
 
     try {
       var tarikh = new Date();
-      if(patches.value==3){
+      if(patches.value==3){ //patch tarikh je
         jsonpatch.apply(entity, [{op: 'replace', path: '/dateReceived', value: tarikh}]);
       }
       
       jsonpatch.apply(entity, [patches], /*validate*/ true);
-      Log.create({'thesisId':entity._id,'checkpoint':entity.checkpoint,time:tarikh,'studentId':entity.studentId})
+      console.log('dkt checkpoitn',entity.checkpoint);
+      if(entity.checkpoint!==5)
+        Log.create({'thesisId':entity._id,'checkpoint':entity.checkpoint,time:tarikh,'studentId':entity.studentId})
     } catch(err) {
       return Promise.reject(err);
     }

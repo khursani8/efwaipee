@@ -5,6 +5,7 @@
 
 #TODO <br>
 * Using timeline style <br>
+* Bug in the log add <br>
 <input data-step="3" data-intro="First need to input student ID eg. g19137" type="text" id="input" ng-model="dashboardCtrl.id" placeholder="STUDENT ID"><button class="btn btn-primary" onclick="check()" ng-click="dashboardCtrl.checkLog()" data-step="4" data-intro="Click on Check">Check</button>
   
 
@@ -130,8 +131,6 @@
 
 <script>
 
-
-
     var check = function(){
         id = document.getElementById('input').value
         
@@ -204,7 +203,6 @@
             }
 
     }
-
 
 </script>
 
