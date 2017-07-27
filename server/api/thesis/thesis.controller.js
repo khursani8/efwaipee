@@ -121,10 +121,28 @@ function handleError(res, statusCode) {
 
 // Gets a list of Thesiss
 export function index(req, res) {
-  return Thesis.find().exec()
+  return Thesis.find().sort({"name": 1}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
+// Gets a list of Thesis group
+export function indexGroup(req, res) {
+  return Thesis.aggregate([
+		{
+			$group: {
+				"_id":"$name",
+				"id":{$push:"$_id"},
+        "examinerName":{$push:"$examinerName"},
+        "studentName":{$first:"$studentName"}
+      }
+		},
+	])
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 
 // Gets a single Thesis from the DB
 export function show(req, res) {
@@ -144,7 +162,21 @@ export function showStudent(req, res) {
 
 export function showThesis(req, res) {
   // console.log("show Thesis",req.params.name);
-  return Thesis.find({"name":{'$regex':req.params.name,'$options':'i'}}).exec()
+  return Thesis.aggregate([
+    {
+			$match: {"name":{'$regex':req.params.name,'$options':'i'}}
+		},
+		{
+			$group: {
+				"_id":"$name",
+				"id":{$push:"$_id"},
+        "examinerName":{$push:"$examinerName"},
+        "studentName":{$first:"$studentName"}
+      }
+		},
+	])
+  
+  .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

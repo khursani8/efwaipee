@@ -10,32 +10,47 @@ export class ThesisComponent {
     
     /*@ngInject*/
     constructor($http, $scope, socket,moment) {
+        $('.tooltipped').tooltip({delay: 50});
+        $('select').material_select();
+        $('.modal').modal();
         this.$http = $http;
         this.socket = socket;
         this.moment = moment;
+        this.$scope = $scope;
         $scope.$on('$destroy', function() {
             socket.unsyncUpdates('thesis');
         });
+
+        $scope.generateQR =  (params) => {
+            if(params){
+            this.$http.get('/api/thesis/'+params)
+            .then(response => {
+                this.awesomeThesis = response.data;
+                console.log(response.data)
+                this.socket.syncUpdates('thesis', this.awesomeThesis);
+            });
+            console.log(params);
+            $('#modal1').modal('open');
+            $('#qrcode').empty()
+            $('#qrcode').qrcode(params);
+            }
+        }
     }
 
     $onInit() {
-        this.$http.get('/api/thesis')
+        
+        this.$http.get('/api/thesis/group')
             .then(response => {
-                this.awesomeThesis = response.data;
+                this.awesomeThesisGroup = response.data;
                 this.backup = response.data;
-                console.log(response.data)
-                this.socket.syncUpdates('thesis', this.awesomeThesis);
+                // console.log(response.data)
+                this.socket.syncUpdates('thesisGroup', this.awesomeThesisGroup);
             });
 
     }
 
-    readabletime(received){
-        if(received)
-            return this.moment(received)
-        return "Examiner not received"
-    }
-
     time(received){
+        this.$scope.readable = this.moment(received) || "Examiner not received"
         var output;
         received = Math.floor(this.moment(new Date()).diff(this.moment(received),'months',true))
         switch (received) {
@@ -61,12 +76,15 @@ export class ThesisComponent {
         if(this.keyword){
             this.$http.get('/api/thesis/name/'+this.keyword)
             .then(response=>{
-                this.awesomeThesis = response.data;
+                this.awesomeThesisGroup = response.data;
             })
             .catch(()=>{
-                this.awesomeThesis = this.backup;
+                this.awesomeThesisGroup = this.backup;
             })
         }
+        $('.tooltipped').tooltip({delay: 50});
+        $('select').material_select();
+        $('.modal').modal();
     }
 
     fillForm(thesis){
@@ -105,25 +123,25 @@ export class ThesisComponent {
 
 }
 
-export class ThesisDetailsComponent{
-    constructor($http, $scope, socket,$stateParams) {
-        this.$http = $http;
-        this.socket = socket;
+// export class ThesisDetailsComponent{
+//     constructor($http, $scope, socket,$stateParams) {
+//         this.$http = $http;
+//         this.socket = socket;
         
-        $scope.id = $stateParams.id;
+//         $scope.id = $stateParams.id;
 
-        $scope.generateQR = function (params) {
-        $('#qrcode').empty()
-            // console.log('generateQR',params);
-        $('#qrcode').qrcode(params);
-    }
+//         $scope.generateQR = function (params) {
+//         $('#qrcode').empty()
+//             // console.log('generateQR',params);
+//         $('#qrcode').qrcode(params);
+//     }
     
-        $scope.generateQR({text:$scope.id
-        // ,foreground:"#2196F3",background:"#FCC11B"
-        });
+//         $scope.generateQR({text:$scope.id
+//         // ,foreground:"#2196F3",background:"#FCC11B"
+//         });
 
-    }
-}
+//     }
+// }
 
 export default angular.module('efwaipeeApp.thesis', [uiRouter])
     .filter('checkpoint', function() {
@@ -154,9 +172,9 @@ export default angular.module('efwaipeeApp.thesis', [uiRouter])
         controller: ThesisComponent,
         controllerAs: 'thesisCtrl'
     })
-    .component('details',{
-        template: require('./thesis.details.html'),
-        controller: ThesisDetailsComponent,
-        controllerAs: 'thesisDetailsCtrl'
-    })
+    // .component('details',{
+    //     template: require('./thesis.details.html'),
+    //     controller: ThesisDetailsComponent,
+    //     controllerAs: 'thesisDetailsCtrl'
+    // })
     .name;
