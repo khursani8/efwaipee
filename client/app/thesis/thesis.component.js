@@ -10,9 +10,6 @@ export class ThesisComponent {
     
     /*@ngInject*/
     constructor($http, $scope, socket,moment) {
-        $('.tooltipped').tooltip({delay: 50});
-        $('select').material_select();
-        $('.modal').modal();
         this.$http = $http;
         this.socket = socket;
         this.moment = moment;
@@ -27,7 +24,7 @@ export class ThesisComponent {
             .then(response => {
                 this.awesomeThesis = response.data;
                 console.log(response.data)
-                this.socket.syncUpdates('thesis', this.awesomeThesis);
+                this.socket.syncUpdates('thesisGroup', this.awesomeThesisGroup);
             });
             console.log(params);
             $('#modal1').modal('open');
@@ -43,10 +40,8 @@ export class ThesisComponent {
             .then(response => {
                 this.awesomeThesisGroup = response.data;
                 this.backup = response.data;
-                // console.log(response.data)
                 this.socket.syncUpdates('thesisGroup', this.awesomeThesisGroup);
             });
-
     }
 
     time(received){
@@ -115,9 +110,9 @@ export class ThesisComponent {
         }
     }
 
-    deleteThesis(thesis) {
-        console.log('ctheis', thesis)
-        this.$http.delete(`/api/thesis/${thesis._id}`);
+    deleteThesis(thesisid) {
+        console.log('ctheisid', thesisid)
+        this.$http.delete(`/api/thesis/${thesisid}`);
     }
 
 
