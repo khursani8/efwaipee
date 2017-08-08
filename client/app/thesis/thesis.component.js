@@ -40,6 +40,7 @@ export class ThesisComponent {
             .then(response => {
                 this.awesomeThesisGroup = response.data;
                 this.backup = response.data;
+                console.log(this.backup);
                 this.socket.syncUpdates('thesisGroup', this.awesomeThesisGroup);
             });
     }
@@ -83,12 +84,12 @@ export class ThesisComponent {
     }
 
     fillForm(thesis){
-        this.thesisName = thesis.name
+        this.thesisName = thesis._id
         this.studentId = thesis.studentId
         this.studentName = thesis.studentName
-        this.examinerId = thesis.examinerId
-        this.examinerName = thesis.examinerName
-        this.examinerPhone = thesis.examinerPhone
+        // this.examinerId = thesis.examinerId
+        // this.examinerName = thesis.examinerName
+        // this.examinerPhone = thesis.examinerPhone
     }
 
     addThesis() {

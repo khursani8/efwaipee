@@ -132,7 +132,8 @@ export function indexGroup(req, res) {
 		{
 			$group: {
 				"_id":"$name",
-				"id":{$push:"$_id"},
+        "id":{$push:"$_id"},
+        "studentId":{$first:"$studentId"},
         "examinerName":{$push:"$examinerName"},
         "studentName":{$first:"$studentName"}
       }

@@ -6,8 +6,6 @@
 #TODO <br>
 * Get feedback on user experience <br>
 * Develop test cases for this features <br>
-* One hardcopy one submission <br>
-
     
     <div class="col m4 s12"  data-step="2" data-intro="This form is to register student thesis with the examiner.">
         <form class="thing-form" style="margin: 0 auto; width:250px;">
@@ -43,6 +41,7 @@
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Student ID</th>
                     <th>Student Name</th>
                     <th>Examiner Name</th>
                     <th></th>
@@ -52,7 +51,8 @@
 
             <tbody ng-repeat="thesis in thesisCtrl.awesomeThesisGroup" >
                 <tr>
-                    <td>{{thesis._id}}</td>
+                    <td ng-click="thesisCtrl.fillForm(thesis)">{{thesis._id}}</td>
+                    <td>{{thesis.studentId}}</td>
                     <td>{{thesis.studentName}}</td>
                     <td>
                         <select ng-options="thesis.examinerName.indexOf(i) as i for i in thesis.examinerName"
