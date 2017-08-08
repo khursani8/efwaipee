@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col m8">
+    <div class="col m12">
         <div id="name"></div>
-        <video id="preview"></video>
+        <video id="preview" class="responsive-video" width="100%" height="100%"></video>
             <script type="text/javascript">
               
               scanner = new Instascan.Scanner({ video: document.getElementById('preview'),refractoryPeriod: 5000 });
@@ -43,11 +43,8 @@
             </script>
     </div>
 
-    <div class="col m4">
-      
-<textarea rows="30" cols="50" id="test" style="margin: 0px; height: 100px; width: 300px; z-index: auto;">
-
-</textarea>
+    <div class="col m12">
+      <textarea rows="30" cols="50" id="test" style="margin: 0px; height: 100px; width: 300px; z-index: auto;"></textarea>
     </div>
   </div>
 </div>
